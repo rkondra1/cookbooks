@@ -1,5 +1,0 @@
-default['nginx']['tenantName'] = "care"
-default['wp']['dbName'] = "wp1"
-default['wp']['dbUser'] = "user1"
-default['wp']['dbPassword'] = "password"
-default['wp']['dbHost'] = "mydbinstance.cn7kuj49ihkd.us-west-2.rds.amazonaws.com"
