@@ -1,6 +1,0 @@
-chef-repo/*
-wpcookbook*
-.DS*
-.gitignore
-cookbooks/learn*
-cookbooks/testwp*
