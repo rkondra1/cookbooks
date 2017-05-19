@@ -1,0 +1,5 @@
+default['nginx']['tenantName'] = "care"
+default['wp']['dbName'] = "wp1"
+default['wp']['dbUser'] = "user1"
+default['wp']['dbPassword'] = "password"
+default['wp']['dbHost'] = "test-authoring-wp-db.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306"
