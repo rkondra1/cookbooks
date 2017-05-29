@@ -2,3 +2,4 @@
 .delivery/*
 .DS*		
 Berk*.lock
+target/*
