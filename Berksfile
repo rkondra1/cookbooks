@@ -1,3 +1,3 @@
-source 'https://supermarket.chef.io'
+source 'https://supermarket.platform.intuit.net/'
 
-metadata
+cookbook 'authoring', path: './cookbooks/authoring'

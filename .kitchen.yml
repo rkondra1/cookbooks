@@ -41,7 +41,7 @@ transport:
 suites:
   - name: default
     run_list:
-      - recipe[test-wordpress::default]
+      - recipe[authoring::default]
     verifier:
       inspec_tests:
         - test/smoke/default
