@@ -1,0 +1,23 @@
+<assembly>
+    <id>resources</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <baseDirectory>${pom.artifactId}</baseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <outputDirectory/>
+            <directory>${basedir}</directory>
+            <excludes>
+                <exclude>target/**</exclude>
+                <exclude>pom.xml</exclude>
+                <exclude>assembly.xml</exclude>
+                <exclude>rc-settings.xml</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>
+
