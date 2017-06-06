@@ -5,4 +5,4 @@ default['wp']['dbUser'] = "user1"
 default['wp']['dbPassword'] = "password"
 default['wp']['dbHost'] = "mydbinstance-wordpress.cn7kuj49ihkd.us-west-2.rds.amazonaws.com:3306"
 default['deploy']['download_dir'] = "/deploy/artifacts"
-default['deploy']['appname'] = "cms-authoring-wp-plugins"
+default['deploy']['plugins'] = [ "content-transformer" , "Plugin-CustomField" ]
