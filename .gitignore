@@ -3,3 +3,4 @@
 .DS*		
 Berk*.lock
 target/*
+berks-cook*
