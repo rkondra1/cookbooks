@@ -1,0 +1,11 @@
+
+{
+  "wp" :{
+    "dbName": "wp_qa",
+    "dbUser": "deploy",
+    "dbPassword": "intuit01"
+},
+  "run_list" : [
+    "recipe[authoring::default]"
+  ]
+}
