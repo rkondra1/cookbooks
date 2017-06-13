@@ -1,0 +1,25 @@
+{
+"secrets": {
+    "kms_region": "us-west-2",
+    "secrets_s3_bucket": "iss-749540722843-us-west-2",
+    "kms_cmk_id": "090a34d3-f560-4181-881f-80b96bd1bbc8",
+    "shred_secrets": "false",
+    "cli_source": "artifacts-749540722843-us-west-2",
+    "cli_package": "secrets-cli-2.3.4.0.rpm"
+  },
+
+  "wp" :{
+    "dbName": "wp_dev",
+    "dbUser": "deploy",
+    "dbPassword": "intuit01"
+},
+"overrides" : {
+  "wildcardcert_key": "wildcardcert_key",
+    "wildcardcert_pub": "wildcardcert_pub"
+},
+  "run_list" : [
+    "recipe[secrets]",
+    "recipe[overrides::deploy_secrets]",
+    "recipe[nginx]"
+  ]
+}

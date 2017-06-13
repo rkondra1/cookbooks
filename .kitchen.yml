@@ -7,7 +7,7 @@ driver:
   availability_zone: a
   subnet_id: subnet-e424afad
   instance_type: t2.micro
-  image_id: ami-3e96f15e
+  image_id: ami-0b7af46b
   security_group_ids: sg-853950fe
   retryable_tries: 120
 
@@ -23,11 +23,11 @@ verifier:
   name: inspec
 
 platforms:
-  - name: centos-7.2
+  - name: authoring-ami
     transport:
       username: ec2-user
     driver:
-      image_id: ami-3e96f15e
+      image_id: ami-0b7af46b
 #    block_device_mappings:
       #- ebs_device_name: /dev/sdb
         #ebs_volume_type: gp2
@@ -40,6 +40,14 @@ transport:
 
 suites:
   - name: default
+    attributes:
+      secrets:
+        kms_region: us-west-2
+        secrets_s3_bucket: iss-206199558186-us-west-2
+        kms_cmk_id: d5f0a34d-9be4-4992-a001-8ff022b2dafa
+        shred_secrets: 'false'
+        cli_source: artifacts-206199558186-us-west-2
+        cli_package: secrets-cli-2.3.4.0.rpm
     run_list:
       - recipe[authoring::default]
     verifier:
