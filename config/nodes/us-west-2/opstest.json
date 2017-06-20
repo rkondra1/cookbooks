@@ -9,7 +9,7 @@
     },
 
     "wp": {
-        "dbName": "wp_dev",
+        "dbName": "wp_opstest",
         "dbUser": "deploy",
         "dbPassword": "intuit01"
     },
@@ -45,6 +45,8 @@
         "recipe[secrets]",
         "recipe[overrides::deploy_secrets]",
         "recipe[nginx::1.8.1-1_el7]",
-        "recipe[authoring]"
-    ]
-}
+        "recipe[authoring::nginx]",
+       "recipe[authoring::php-fpm]",
+       "recipe[authoring::wp]",
+       "recipe[authoring::start_server]"
+    ]}

@@ -10,6 +10,7 @@ cookbook_file "/etc/nginx/fastcgi_params" do
   owner "root"
   group "root"
   mode 0644
+  action :create
 end    
 
 template "/etc/nginx/location-conf.d/ssl-wordpress.conf" do
