@@ -25,7 +25,7 @@ template "/usr/share/nginx/html/#{node['nginx']['tenantName']}/wordpress/wp-conf
 end
 
 execute "extract environment config files " do
-  command "unzip #{node['deploy']['download_dir']}/*#{node['wp']['config_zip_name']}*.zip -d #{node['nginx']['install_folder']}/#{node['nginx']['tenantName']}/wordpress/wp-content/"
+  command "unzip #{node['deploy']['download_dir']}/*#{node['wp']['config_zip_name']}*.zip -d #{node['nginx']['install_folder']}/#{node['nginx']['tenantName']}/wordpress/"
   user "nginx"
   group "nginx" 
 end

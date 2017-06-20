@@ -3,7 +3,10 @@
   "wp" :{
     "dbName": "wp_qa",
     "dbUser": "deploy",
-    "dbPassword": "intuit01"
+    "dbPassword": "intuit01",
+     "env": "qa"
+
+
 },
   "run_list" : [
     "recipe[authoring::default]"

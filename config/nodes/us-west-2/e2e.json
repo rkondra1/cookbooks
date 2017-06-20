@@ -3,7 +3,8 @@
   "wp" :{
     "dbName": "wp_e2e",
     "dbUser": "deploy",
-    "dbPassword": "intuit01"
+    "dbPassword": "intuit01",
+    "env": "e2e"
 },
   "run_list" : [
     "recipe[authoring::default]"
