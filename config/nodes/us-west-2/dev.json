@@ -11,7 +11,7 @@
     },
 
     "wp": {
-        "dbName": "wp_opstest",
+        "dbName": "wp_dev",
         "dbUser": "deploy",
         "dbPassword": "intuit01",
         "env": "dev"
