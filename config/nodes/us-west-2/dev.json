@@ -2,7 +2,8 @@
   "wp" :{
     "dbName": "wp_dev",
     "dbUser": "deploy",
-    "dbPassword": "intuit01"
+    "dbPassword": "intuit01",
+    "env": "dev"
 },
   "run_list" : [
     "recipe[authoring::default]"

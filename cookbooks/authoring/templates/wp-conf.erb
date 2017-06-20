@@ -31,6 +31,10 @@ define('DB_PASSWORD', '<%= node['wp']['dbPassword'] %>');
 /** MySQL hostname */
 define('DB_HOST', '<%= node['wp']['dbHost'] %>');
 
+
+
+define('WP_ENV','<%= node['wp']['env'] %>');
+
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
@@ -54,6 +58,9 @@ define('AUTH_SALT',        'put your unique phrase here');
 define('SECURE_AUTH_SALT', 'put your unique phrase here');
 define('LOGGED_IN_SALT',   'put your unique phrase here');
 define('NONCE_SALT',       'put your unique phrase here');
+
+
+
 
 /**#@-*/
 
@@ -87,3 +94,5 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+include ABSPATH . '/wp-config.' . WP_ENV .'.php';
