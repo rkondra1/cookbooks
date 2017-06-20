@@ -7,12 +7,6 @@ include_recipe "authoring::nginx"
 include_recipe "authoring::php-fpm"
 include_recipe "authoring::wp"
 include_recipe "authoring::plugins"
+include_recipe "authoring::start_server"
 
-service "nginx" do
-  action :restart
-end
-
-service "php-fpm" do
-  action :restart
-end
 

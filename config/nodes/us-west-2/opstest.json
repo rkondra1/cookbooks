@@ -1,11 +1,53 @@
-
 {
-  "wp" :{
-    "dbName": "wp_opstest",
-    "dbUser": "deploy",
-    "dbPassword": "intuit01"
-},
-  "run_list" : [
-    "recipe[authoring::default]"
-  ]
-}
+    "secrets": {
+        "kms_region": "us-west-2",
+        "secrets_s3_bucket": "iss-749540722843-us-west-2",
+        "kms_cmk_id": "090a34d3-f560-4181-881f-80b96bd1bbc8",
+        "shred_secrets": "false",
+        "cli_source": "artifacts-749540722843-us-west-2",
+        "cli_package": "secrets-cli-2.3.4.0.rpm"
+    },
+
+    "wp": {
+        "dbName": "wp_opstest",
+        "dbUser": "deploy",
+        "dbPassword": "intuit01",
+        "env": "opstest"
+    },
+    "overrides": {
+        "wildcardcert_key": "wildcardcert_key",
+        "wildcardcert_pub": "wildcardcert_pub"
+    },
+    "nginx": {
+        "use_proxy_protocol_configs": "true",
+        "clientMaxBodySize": "20m",
+        "proxy_protocol_support_443": "default_server ssl proxy_protocol",
+        "sslCert": "/etc/ssl/server.pem",
+        "sslKey": "/etc/ssl/server.key",
+        "server": {
+            "ssl_proxy_protocol": {
+                "locations": [{
+                "path" : "/",
+                    "options": [
+                        "root /usr/share/nginx/html",
+                        "proxy_http_version 1.1",
+                        "proxy_set_header X-Forwarded-For $proxy_protocol_addr",
+                        "proxy_set_header X-Real-IP $proxy_protocol_addr",
+                        "include /etc/nginx/location-conf.d/ssl-wordpress.conf"
+                    ]
+                }]
+            }
+        },
+        "upstream" : false
+    },
+
+
+    "run_list": [
+        "recipe[secrets]",
+        "recipe[overrides::deploy_secrets]",
+        "recipe[nginx::1.8.1-1_el7]",
+        "recipe[authoring::nginx]",
+       "recipe[authoring::php-fpm]",
+       "recipe[authoring::wp]",
+       "recipe[authoring::start_server]"
+    ]}
