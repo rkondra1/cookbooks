@@ -5,7 +5,8 @@
         "kms_cmk_id": "090a34d3-f560-4181-881f-80b96bd1bbc8",
         "shred_secrets": "false",
         "cli_source": "artifacts-749540722843-us-west-2",
-        "cli_package": "secrets-cli-2.3.4.0.rpm"
+        "cli_package": "secrets-cli-2.3.4.0.rpm",
+        "prefix": "wp-authoring/web/opstest"
     },
 
     "wp": {
