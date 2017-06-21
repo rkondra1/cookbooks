@@ -1,20 +1,20 @@
 remote_file "/tmp/php-common.rpm" do
-  source "#{node['php']['artifact_bucket']}/#{node['php']['common_rpm_name']}"
+  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['common_rpm_name']}"
   mode 0755
 end
 
 remote_file "/tmp/php-fpm.rpm" do
-  source "#{node['php']['artifact_bucket']}/#{node['php']['fpm_rpm_name']}"
+  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['fpm_rpm_name']}"
   mode 0755
 end
 
 remote_file "/tmp/php-pdo.rpm" do
-  source "#{node['php']['artifact_bucket']}/#{node['php']['pdo_rpm_name']}"
+  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['pdo_rpm_name']}"
   mode 0755
 end
 
 remote_file "/tmp/php-mysql.rpm" do
-  source "#{node['php']['artifact_bucket']}/#{node['php']['mysql_rpm_name']}"
+  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['mysql_rpm_name']}"
   mode 0755
 end
 

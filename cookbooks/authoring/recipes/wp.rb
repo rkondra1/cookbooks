@@ -1,22 +1,10 @@
-#execute 'create directory structure' do
-#  command "rm -rf #{node['nginx']['tenantName']} && mkdir #{node['nginx']['tenantName']} && cp -rf wordpress #{node['nginx']['tenantName']} && chown nginx:nginx -R #{node['nginx']['tenantName']} && chmod u+x -R #{node['nginx']['tenantName']}"
-#  cwd '/usr/share/nginx/html/'
-#end
-#template "/usr/share/nginx/html/#{node['nginx']['tenantName']}/wordpress/wp-config.php" do
-#  mode 0744
-#  source "wp-conf.erb"
-#  owner "nginx"
-#  group "nginx"
-#  backup false
-#end
-#
-#
+
 remote_file "/tmp/wordpress.tar.gz" do
-  source "#{node['wp']['artifact_bucket']}/#{node['wp']['artifact_name']}"
+  source "#{node['wp-authoring']['wp']['artifact_bucket']}/#{node['wp-authoring']['wp']['artifact_name']}"
   mode 0755
 end
 
-directory "/usr/share/nginx/html/#{node['nginx']['tenantName']}" do
+directory "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}" do
   owner 'nginx'
   group 'nginx'
   mode '1755'
@@ -26,12 +14,12 @@ end
 
 
 execute 'unzip wordpress to location' do
-  command "tar xf /tmp/wordpress.tar.gz -C /usr/share/nginx/html/#{node['nginx']['tenantName']}"
+  command "tar xf /tmp/wordpress.tar.gz -C #{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}"
   user "nginx"
 end
 
 
-template "/usr/share/nginx/html/#{node['nginx']['tenantName']}/wordpress/wp-config.php" do
+template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-config.php" do
   mode 0755
   source "wp-conf.erb"
   owner "nginx"
