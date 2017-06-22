@@ -31,8 +31,7 @@
     "outputs": {
       "server": "10.131.157.22:9997"
     },
-    "secrets_bucket": "iss-749540722843-us-west-2",
-    "secret_name": "splunk.zip"
+    "secrets_bucket": "iss-749540722843-us-west-2"
   },
 
     "wp": {
