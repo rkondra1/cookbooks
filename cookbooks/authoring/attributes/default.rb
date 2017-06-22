@@ -10,8 +10,8 @@ default['deploy']['download_dir'] = "/deploy/artifacts"
 default['deploy']['plugins'] = [ "content-transformer" , "Plugin-CustomField", "utility-client" ]
 
 default['php']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/php-artifacts"
-default['php']['common_rpm_name'] = "php71w-common-7.1.5-1.w7.x86_64.rpm"
-default['php']['fpm_rpm_name'] = "php71w-fpm-7.1.5-1.w7.x86_64.rpm"
-default['php']['pdo_rpm_name'] = "php71w-pdo-7.1.5-1.w7.x86_64.rpm"
-default['php']['mysql_rpm_name'] = "php71w-mysqlnd-7.1.5-1.w7.x86_64.rpm"
+default['php']['common_rpm_name'] = "php71w-common-7.1.5-1.w6.x86_64.rpm"
+default['php']['fpm_rpm_name'] = "php71w-fpm-7.1.5-1.w6.x86_64.rpm"
+default['php']['pdo_rpm_name'] = "php71w-pdo-7.1.5-1.w6.x86_64.rpm"
+default['php']['mysql_rpm_name'] = "php71w-mysqlnd-7.1.5-1.w6.x86_64.rpm"
 
