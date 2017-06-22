@@ -9,6 +9,31 @@
         "prefix": "wp-authoring/web/dev"
 
     },
+"splunk": {
+    "inputs": {
+      "index": "authoring_dev",
+      "monitors": {
+        "/var/log/nginx/*.log": {
+          "disabled": "false"
+        },
+        "/var/log/php-fpm/*.log": {
+          "disabled": "false",
+          "sourcetype": "log4j"
+        }
+     },
+      "fields": {
+        "appname": "wp-authoring",
+        "role": "web",
+        "region": "us-west-2",
+        "env": "dev"
+      }
+    },
+    "outputs": {
+      "server": "10.131.157.22:9997"
+    },
+    "secrets_bucket": "iss-749540722843-us-west-2",
+    "secret_name": "splunk.zip"
+  },
 
     "wp": {
         "dbName": "wp_dev",
@@ -46,6 +71,7 @@
 
 
     "run_list": [
+        "recipe[splunk]",
         "recipe[secrets]",
         "recipe[overrides::deploy_secrets]",
         "recipe[nginx::1.8.1-1_el7]",
