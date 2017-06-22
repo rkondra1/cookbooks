@@ -28,7 +28,7 @@ template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authorin
 end
 
 execute "extract environment config files " do
-  command "unzip #{node['deploy']['download_dir']}/*#{node['wp']['config_zip_name']}*.zip -d #{node['nginx']['install_folder']}/#{node['nginx']['tenantName']}/wordpress/"
+  command "unzip #{node['wp-authoring']['deploy']['download_dir']}/*#{node['wp-authoring']['wp']['config_zip_name']}*.zip -d #{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/"
   user "nginx"
   group "nginx" 
 end
