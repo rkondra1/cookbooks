@@ -6,17 +6,41 @@
         "kms_cmk_id": "090a34d3-f560-4181-881f-80b96bd1bbc8",
         "shred_secrets": "false",
         "cli_source": "artifacts-749540722843-us-west-2",
-        "cli_package": "secrets-cli-2.3.4.0.rpm",
+        "cli_package": "secrets-cli-2.3.4.0-el6.rpm",
         "prefix": "wp-authoring/web/e2e"
-
     },
-
+"splunk": {
+    "inputs": {
+      "index": "authoring_e2e",
+      "monitors": {
+        "/var/log/nginx/*.log": {
+          "disabled": "false"
+        },
+        "/var/log/php-fpm/*.log": {
+          "disabled": "false",
+          "sourcetype": "log4j"
+        }
+     },
+      "fields": {
+        "appname": "wp-authoring",
+        "role": "web",
+        "region": "us-west-2",
+        "env": "e2e"
+      }
+    },
+    "outputs": {
+      "server": "10.131.157.22:9997"
+    },
+    "secrets_bucket": "iss-749540722843-us-west-2"
+  },
+"wp-authoring":{
     "wp": {
         "dbName": "wp_e2e",
         "dbUser": "deploy",
         "dbPassword": "intuit01",
         "env": "e2e"
-    },
+    }
+},
     "overrides": {
         "wildcardcert_key": "wildcardcert_key",
         "wildcardcert_pub": "wildcardcert_pub"
@@ -48,7 +72,8 @@
 
     "run_list": [
         "recipe[secrets]",
+        "recipe[splunk]",
         "recipe[overrides::deploy_secrets]",
-        "recipe[nginx::1.8.1-1_el7]",
+        "recipe[nginx::1.8.0-2]",
         "recipe[authoring]"
     ]}

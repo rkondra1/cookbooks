@@ -32,13 +32,14 @@
     },
     "secrets_bucket": "iss-749540722843-us-west-2"
   },
-
+"wp-authoring":{
     "wp": {
         "dbName": "wp_dev",
         "dbUser": "deploy",
         "dbPassword": "intuit01",
         "env": "dev"
-    },
+    }
+},
     "overrides": {
         "wildcardcert_key": "wildcardcert_key",
         "wildcardcert_pub": "wildcardcert_pub"
