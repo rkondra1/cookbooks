@@ -1,13 +1,13 @@
 location = /{
-return 302 /<%= node['nginx']['tenantName'] %>/wordpress;
+return 302 /<%= node['wp-authoring']['nginx']['tenantName'] %>/wordpress;
 }
 
-location = /<%= node['nginx']['tenantName'] %>/{
-return 302 /<%= node['nginx']['tenantName'] %>/wordpress/;
+location = /<%= node['wp-authoring']['nginx']['tenantName'] %>/{
+return 302 /<%= node['wp-authoring']['nginx']['tenantName'] %>/wordpress/;
 }
 
-location =  /<%= node['nginx']['tenantName'] %> {
-return 302  /<%= node['nginx']['tenantName'] %>/wordpress;
+location =  /<%= node['wp-authoring']['nginx']['tenantName'] %> {
+return 302  /<%= node['wp-authoring']['nginx']['tenantName'] %>/wordpress;
 }
 
 location ~ [^/]\.php(/|$) {
