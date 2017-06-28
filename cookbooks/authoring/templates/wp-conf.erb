@@ -23,10 +23,10 @@
 define('DB_NAME', '<%= node['wp-authoring']['wp']['dbName'] %>');
 
 /** MySQL database username */
-define('DB_USER', '<%= node['wp-authoring']['wp']['dbUser'] %>');
+define('DB_USER', '<%= node.run_state['secrets']['data'][node['wp-authoring']['wp']['dbUser']].strip %>');
 
 /** MySQL database password */
-define('DB_PASSWORD', '<%= node['wp-authoring']['wp']['dbPassword'] %>');
+define('DB_PASSWORD', '<%= node.run_state['secrets']['data'][node['wp-authoring']['wp']['dbPassword']].strip %>');
 
 /** MySQL hostname */
 define('DB_HOST', '<%= node['wp-authoring']['wp']['dbHost'] %>');

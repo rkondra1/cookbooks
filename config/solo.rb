@@ -13,7 +13,7 @@ cookbook_path [
 #data_bag_path File.join(chef_home_dir, 'data_bags')
 
 # Chef log file
-#log_location '/var/log/chef/chef.log'
+log_location '/var/log/chef/chef.log'
 
 # Chef environments paths
 #environment_path File.join(chef_home_dir, 'environments')
