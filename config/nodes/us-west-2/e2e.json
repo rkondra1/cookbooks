@@ -26,9 +26,6 @@
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
     "recipe[nginx::1.8.0-2]",
-    "recipe[authoring]",
-    "recipe[authoring]",
-    "recipe[authoring]",
     "recipe[authoring]"
   ]
 }

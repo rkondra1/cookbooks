@@ -25,9 +25,6 @@
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
     "recipe[nginx::1.8.0-2]",
-    "recipe[authoring::nginx]",
-    "recipe[authoring::php-fpm]",
-    "recipe[authoring::wp]",
-    "recipe[authoring::start_server]"
+    "recipe[authoring]"
   ]
 }
