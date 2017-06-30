@@ -60,6 +60,15 @@ override['nginx']['server']['ssl_proxy_protocol'] = {
                         "include /etc/nginx/location-conf.d/ssl-wordpress.conf"
                 ]
   }]
+}
+override['nginx']['server']['healthcheck'] = {
+  'locations' => [{
+    'path' => "/",
+    'options'=> [      "root /usr/share/nginx/html",
+                        "index index.php",
+                        "include /etc/nginx/location-conf.d/ssl-wordpress.conf"
+                ]
+  }]
 
 }
 override['nginx']['upstream'] = false

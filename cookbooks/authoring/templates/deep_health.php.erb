@@ -1,0 +1,38 @@
+<?php
+
+include "<%= node['wp-authoring']['nginx']['install_folder'] %>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/wp-config.php";
+
+$ch = curl_init();
+
+
+//Downstream checks
+curl_setopt($ch, CURLOPT_URL, CAS_URL."<%= node['wp-authoring']['CAS']['healthcheck_endpoint']%>");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$output = curl_exec($ch);
+$info   = curl_getinfo($ch);
+if ($info['http_code'] != 200) {
+    echo "Health check Fail. CAS returned a non 200.";
+    http_response_code(500);
+    exit();
+}
+
+
+//Is wordpress Up?
+curl_setopt($ch, CURLOPT_URL, "http://localhost:<%=node['nginx']['server']['healthcheck']['listen_port']%>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/?rest_route=");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$output = curl_exec($ch);
+if (strpos($output, "<%=node['wp-authoring']['healthcheck']['compare_string']%>") === false) {
+    echo "Health Check Fail";
+    http_response_code(500);
+    exit();
+    
+}
+
+
+//If any plugin related health checks
+//Else everything good, return an OK
+else {
+    echo "Its an OK";
+    http_response_code(200);
+}
+?>
