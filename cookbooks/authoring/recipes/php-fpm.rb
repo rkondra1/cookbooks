@@ -1,47 +1,16 @@
-remote_file "/tmp/php-common.rpm" do
-  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['common_rpm_name']}"
-  mode 0755
+node['wp-authoring']['php']['rpm_names'].each do |package|
+  remote_file "/tmp/#{package}" do
+    source "#{node['wp-authoring']['php']['artifact_bucket']}/#{package}"
+    mode 0755
+  end
+
+  package "Installing #{package}" do
+    action :install
+    source "/tmp/#{package}"
+    provider Chef::Provider::Package::Rpm
+  end
 end
 
-remote_file "/tmp/php-fpm.rpm" do
-  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['fpm_rpm_name']}"
-  mode 0755
-end
-
-remote_file "/tmp/php-pdo.rpm" do
-  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['pdo_rpm_name']}"
-  mode 0755
-end
-
-remote_file "/tmp/php-mysql.rpm" do
-  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{node['wp-authoring']['php']['mysql_rpm_name']}"
-  mode 0755
-end
-
-
-package "Installing PHP-Common" do
-  action :install
-  source "/tmp/php-common.rpm"
-  provider Chef::Provider::Package::Rpm
-end
-
-package "Installing PHP-FPM" do
-  action :install
-  source "/tmp/php-fpm.rpm"
-  provider Chef::Provider::Package::Rpm
-end
-
-package "Installing PHP Mysql dependency PHP-PDO" do
-  action :install
-  source "/tmp/php-pdo.rpm"
-  provider Chef::Provider::Package::Rpm
-end
-
-package "Installing PHP-MySql" do
-  action :install
-  source "/tmp/php-mysql.rpm"
-  provider Chef::Provider::Package::Rpm
-end
 
 template "/etc/php-fpm.d/www.conf" do
   mode 0644
