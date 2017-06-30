@@ -125,8 +125,8 @@ println "";
     </build>
 
     <scm>
-      <connection>scm:git:https://github.intuit.com/jjoice/wordpress.git</connection>
-      <url>https://github.intuit.com/jjoice/wordpress.git</url>
+      <connection>scm:git:https://github.intuit.com/ContentMgmt/authoring-wp-cookbooks.git</connection>
+      <url>https://github.intuit.com/ContentMgmt/authoring-wp-cookbooks.git</url>
         <tag>HEAD</tag>
     </scm>
 
