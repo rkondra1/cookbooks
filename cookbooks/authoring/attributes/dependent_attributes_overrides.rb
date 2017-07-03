@@ -32,6 +32,12 @@ override['splunk']['inputs']['monitors'] = {
   '/var/log/php-fpm/*.log' => {
     'sourcetype' => 'log4j',
   },
+
+  #The below derived attributes may not work in the case of wrapper cookbooks overriding install folder or tenant name
+
+  "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-content/plugins/.../*.log" => {
+    'sourcetype' => 'log4j',
+  }
 }
 override['splunk']['inputs']['fields']['role'] = "web"
 override['splunk']['inputs']['fields']['role'] = "us-west-2"
