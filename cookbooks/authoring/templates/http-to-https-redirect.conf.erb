@@ -1,0 +1,7 @@
+# Redirects all requests on port 80 to 443 coming from any hosts matching .intuit.com .elb.amazonaws.com.
+# This server block is usually accompanied by a default_server that support a healthcheck from port 80
+
+server {
+    listen 80 default_server;
+    return 301 https://<%= node['wp-authoring']['wp']['env'] %>-<%= node['wp-authoring']['appname']%>.<%= node['wp-authoring']['domain_suffix'] %>$request_uri;
+}
