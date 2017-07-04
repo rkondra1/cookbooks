@@ -1,0 +1,34 @@
+# This server is intended to support a healthcheck running on port 80. This is typically used in
+# AWS where we have to terminate ssl on the ec2 instance but the ELB healthcheck is not sent
+# with Proxy Protocal enabled. Nginx is not capable of accepting non Proxy Protocol traffic on a
+# Proxy Protocol enabled listener. We label this as the default_server so nginx picks it up when there
+# is no other nginx server blocks that match the Host header being sent. Aws elbs set the host header to
+# the internal ip of the elb node performing the healthcheck (i.e. 10.82.29.87).
+
+# This server block is usually accompanied by another that redirects any requests to port 80 to port 443
+# for all other server names (i.e. .intuit.com, intuit.net, .elb.amazonaws.com, etc...).
+
+server {
+listen <%= node[:nginx][:server][:healthcheck][:listen_port] %>;
+
+#Only requests from localhost and loadbalancer should be able to hit at :80. 
+    server_name localhost 10.*;
+
+
+    <% if node[:nginx][:server][:healthcheck][:access_log].length > 0 -%>
+    access_log <%= node[:nginx][:server][:healthcheck][:access_log] %>;
+    <% end -%>
+
+    <% if node[:nginx][:server][:healthcheck][:locations] -%>
+    <% node[:nginx][:server][:healthcheck][:locations].each do |location| %>
+    location <%= location.path %> {
+        <% location.options.each do |option| %>
+        <%= option %><%-
+            if !node[:nginx][:suppress_automatic_semicolon] -%>
+            ;<%-
+            end -%>
+        <% end -%>
+    }
+    <% end -%>
+    <% end -%>
+}

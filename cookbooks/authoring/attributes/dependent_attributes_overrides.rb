@@ -49,8 +49,12 @@ override['splunk']['secrets_bucket'] = "iss-749540722843-us-west-2"
 override['overrides']['wildcardcert_key'] = "wildcardcert_key"
 override['overrides']['wildcardcert_pub'] = "wildcardcert_pub"
 
+
+override['wp-authoring']['host'] = "#{node['wp-authoring']['wp']['env']}-#{node['wp-authoring']['appname']}.#{node['wp-authoring']['domain_suffix']}"
+
 #nginx recipe
-override['nginx']['use_proxy_protocol_configs'] = 'true'
+override['nginx']['use_proxy_protocol_configs'] = true
+override['nginx']['suppress_automatic_semicolon'] = true
 override['nginx']['clientMaxBodySize'] = '20m'
 override['nginx']['proxy_protocol_support_443'] = "default_server ssl proxy_protocol"
 override['nginx']['sslCert'] = "/etc/ssl/server.pem"
@@ -58,21 +62,22 @@ override['nginx']['sslKey'] = "/etc/ssl/server.key"
 override['nginx']['server']['ssl_proxy_protocol'] = {
   'locations' => [{
     'path' => "/",
-    'options'=> [      "root /usr/share/nginx/html",
-                        "index index.php",
-                        "proxy_http_version 1.1",
-                        "proxy_set_header X-Forwarded-For $proxy_protocol_addr",
-                        "proxy_set_header X-Real-IP $proxy_protocol_addr",
-                        "include /etc/nginx/location-conf.d/ssl-wordpress.conf"
+    'options'=> [      "root /usr/share/nginx/html;",
+                       " if ($host != \"#{node['wp-authoring']['host']}\"){return 301 https://#{node['wp-authoring']['host']};}",
+                        "index index.php;",
+                        "proxy_http_version 1.1;",
+                        "proxy_set_header X-Forwarded-For $proxy_protocol_addr;",
+                        "proxy_set_header X-Real-IP $proxy_protocol_addr;",
+                        "include /etc/nginx/location-conf.d/ssl-wordpress.conf;"
                 ]
   }]
 }
 override['nginx']['server']['healthcheck'] = {
   'locations' => [{
     'path' => "/",
-    'options'=> [      "root /usr/share/nginx/html",
-                        "index index.php",
-                        "include /etc/nginx/location-conf.d/ssl-wordpress.conf"
+    'options'=> [      "root /usr/share/nginx/html;",
+                        "index index.php;",
+                        "include /etc/nginx/location-conf.d/ssl-wordpress.conf;"
                 ]
   }]
 

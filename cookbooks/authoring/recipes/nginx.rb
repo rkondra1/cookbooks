@@ -21,3 +21,21 @@ template "/etc/nginx/location-conf.d/ssl-wordpress.conf" do
   backup false
 end
 
+
+template "/etc/nginx/conf.d/healthcheck.conf" do
+  mode 0644
+  source "healthcheck.conf.erb"
+  owner "root"
+  group "root"
+  backup false
+end
+
+template "/etc/nginx/conf.d/http-to-https-redirect.conf" do
+  mode 0644
+  source "http-to-https-redirect.conf.erb"
+  owner "root"
+  group "root"
+  backup false
+end
+
+
