@@ -6,7 +6,15 @@ default['wp-authoring']['wp']['config_zip_name']= "wp-environment-properties"
 default['wp-authoring']['nginx']['install_folder'] = "/usr/share/nginx/html"
 default['wp-authoring']['wp']['dbHost'] = "cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306"
 default['wp-authoring']['deploy']['download_dir'] = "/deploy/artifacts"
-default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" , "Plugin-CustomField", "utility-client", "plugin-advanced-custom-fields-pro", 'CustomFields','plugin-miniorange-saml-20-single-sign-on' ]
+default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
+                                                 "Plugin-CustomField", 
+                                                 "utility-client", 
+                                                 "plugin-advanced-custom-fields-pro", 
+                                                 "CustomFields",
+                                                 "plugin-miniorange-saml-20-single-sign-on",
+                                                 "plugin-oasis-workflow-pro",
+                                                 "plugin-sucuri-scanner"
+                                                ]
 
 default['wp-authoring']['wp']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/wordpress-artifacts"
 default['wp-authoring']['wp']['artifact_name'] = "wordpress-4.8.tar.gz"
