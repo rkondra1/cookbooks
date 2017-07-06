@@ -7,7 +7,6 @@ default['wp-authoring']['nginx']['install_folder'] = "/usr/share/nginx/html"
 default['wp-authoring']['wp']['dbHost'] = "cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306"
 default['wp-authoring']['deploy']['download_dir'] = "/deploy/artifacts"
 default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
-                                                 "Plugin-CustomField", 
                                                  "utility-client", 
                                                  "plugin-advanced-custom-fields-pro", 
                                                  "CustomFields",
