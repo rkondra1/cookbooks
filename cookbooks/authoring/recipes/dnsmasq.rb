@@ -3,3 +3,9 @@ execute "Append dnsmasq settings for PrivateHZ" do
   user "root"
   group "root" 
 end
+
+execute "Restart dnsmasq" do
+  command 'service dnsmasq restart'
+  user "root"
+  group "root" 
+end
