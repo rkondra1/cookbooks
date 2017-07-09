@@ -65,6 +65,7 @@ override['nginx']['server']['ssl_proxy_protocol'] = {
     'options'=> [      "root /usr/share/nginx/html;",
                        " if ($host != \"#{node['wp-authoring']['host']}\"){return 301 https://#{node['wp-authoring']['host']};}",
                         "index index.php;",
+                        "real_ip_header proxy_protocol;",
                         "proxy_http_version 1.1;",
                         "proxy_set_header X-Forwarded-For $proxy_protocol_addr;",
                         "proxy_set_header X-Real-IP $proxy_protocol_addr;",
