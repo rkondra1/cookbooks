@@ -4,8 +4,7 @@ execute "Append dnsmasq settings for PrivateHZ" do
   group "root" 
 end
 
-execute "Restart dnsmasq" do
-  command 'service dnsmasq restart'
-  user "root"
-  group "root" 
+service "nginx" do
+  action :start
 end
+
