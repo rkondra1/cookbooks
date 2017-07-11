@@ -5,7 +5,7 @@
   },
   "splunk": {
     "inputs": {
-      "index": "authoring_dev",
+      "index": "cms_dev_authoring_west2",
       "fields": {
         "appname": "wp-authoring",
         "role": "web",
