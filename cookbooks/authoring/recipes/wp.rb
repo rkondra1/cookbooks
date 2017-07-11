@@ -54,6 +54,14 @@ template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring
   backup false
 end
 
+template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['common_healthcheck_code']}" do
+  mode 0755
+  source "common_health.php.erb"
+  owner "nginx"
+  group "nginx"
+  backup false
+end
+
 template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['local_healthcheck_endpoint']}" do
   mode 0755
   source "local_health.php.erb"

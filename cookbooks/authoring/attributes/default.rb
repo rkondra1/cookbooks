@@ -32,6 +32,7 @@ default['wp-authoring']['php']['rpm_names'] = [ "php71w-common-7.1.5-1.w6.x86_64
 
 default['wp-authoring']['healthcheck']['compare_string'] = "Intuit Authoring"
 default['wp-authoring']['healthcheck']['deep_healthcheck_endpoint'] = "/health/deep.php"
+default['wp-authoring']['healthcheck']['common_healthcheck_code'] = "/health/common_health.php"
 default['wp-authoring']['healthcheck']['local_healthcheck_endpoint'] = "/health/local.php"
 
 default['wp-authoring']['CAS']['healthcheck_endpoint'] = "/health/local"
