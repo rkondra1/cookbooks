@@ -14,10 +14,14 @@ default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-oasis-workflow-pro",
                                                  "plugin-sucuri-scanner"
                                                 ]
-
+default['wp-authoring']['appdynamics']['php_agent_tar'] = "appdynamics-php-agent-x64-linux-4.3.3.4.tar.bz2"
+default['wp-authoring']['appdynamics']['account'] = "intuittrial"
+default['wp-authoring']['appdynamics']['accesskeyfile'] = "appd_accesskey"
+default['wp-authoring']['appdynamics']['controller'] = "intuittrial.saas.appdynamics.com"
 default['wp-authoring']['wp']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/wordpress-artifacts"
 default['wp-authoring']['wp']['artifact_name'] = "wordpress-4.8.tar.gz"
 default['wp-authoring']['php']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/php-artifacts"
+default['wp-authoring']['php']['version'] = "7.1.5"
 default['wp-authoring']['php']['rpm_names'] = [ "php71w-common-7.1.5-1.w6.x86_64.rpm",
                                                 "php71w-fpm-7.1.5-1.w6.x86_64.rpm",
                                                 "php71w-pdo-7.1.5-1.w6.x86_64.rpm",
