@@ -22,7 +22,7 @@ end
 
 
 execute 'install appd' do
-  command "/opt/appdynamics-php-agent/install.sh -s -a=#{node['wp-authoring']['appdynamics']['account']}@#{node.run_state['secrets']['data'][node['wp-authoring']['appdynamics']['accesskeyfile']]} -e /usr/lib64/php/modules/ -i /etc/php.d/ -v #{node['wp-authoring']['php']['version']}  #{node['wp-authoring']['appdynamics']['controller']} 443 wp-authoring #{node['wp-authoring']['wp']['env']} #{node['hostname']}"
+  command "/opt/appdynamics-php-agent/install.sh -s -a=#{node['wp-authoring']['appdynamics']['account']}@#{node.run_state['secrets']['data'][node['wp-authoring']['appdynamics']['accesskeyfile']].strip} -e /usr/lib64/php/modules/ -i /etc/php.d/ -v #{node['wp-authoring']['php']['version']}  #{node['wp-authoring']['appdynamics']['controller']} 443 wp-authoring #{node['wp-authoring']['wp']['env']} #{node['hostname']}"
   user "root"
 end
 
