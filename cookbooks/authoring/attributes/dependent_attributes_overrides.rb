@@ -41,11 +41,11 @@ override['splunk']['inputs']['monitors'] = {
 }
 override['splunk']['inputs']['fields']['role'] = "web"
 override['splunk']['inputs']['fields']['role'] = "us-west-2"
-override['splunk']['outputs']['server'] = "10.131.157.22:9997"
+override['splunk']['outputs']['server'] = "splunkaws-hf9995.ppd.qdc.cms.intuit.com:9995"
 override['splunk']['secrets_bucket'] = "iss-749540722843-us-west-2"
 
 
-#common-cms-cokbooks 
+#common-cms-cokbooks
 override['overrides']['wildcardcert_key'] = "wildcardcert_key"
 override['overrides']['wildcardcert_pub'] = "wildcardcert_pub"
 
@@ -87,10 +87,3 @@ override['nginx']['upstream'] = false
 #database credential secret's name
 override['wp-authoring']['wp']['dbUser'] = "db_username"
 override['wp-authoring']['wp']['dbPassword'] = "db_password"
-
-
-
-
-
-
-
