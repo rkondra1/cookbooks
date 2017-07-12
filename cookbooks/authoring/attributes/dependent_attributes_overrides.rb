@@ -56,6 +56,7 @@ override['wp-authoring']['host'] = "#{node['wp-authoring']['wp']['env']}-#{node[
 override['nginx']['use_proxy_protocol_configs'] = true
 override['nginx']['suppress_automatic_semicolon'] = true
 override['nginx']['clientMaxBodySize'] = '20m'
+override['nginx']['logType'] = "json"
 override['nginx']['proxy_protocol_support_443'] = "default_server ssl proxy_protocol"
 override['nginx']['sslCert'] = "/etc/ssl/server.pem"
 override['nginx']['sslKey'] = "/etc/ssl/server.key"
