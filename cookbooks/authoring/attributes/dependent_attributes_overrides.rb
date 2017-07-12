@@ -68,8 +68,6 @@ override['nginx']['server']['ssl_proxy_protocol'] = {
                         "index index.php;",
                         "real_ip_header proxy_protocol;",
                         "proxy_http_version 1.1;",
-                        "proxy_set_header X-Forwarded-For $proxy_protocol_addr;",
-                        "proxy_set_header X-Real-IP $proxy_protocol_addr;",
                         "include /etc/nginx/location-conf.d/ssl-wordpress.conf;"
                 ]
   }]
