@@ -7,7 +7,6 @@ default['wp-authoring']['nginx']['install_folder'] = "/usr/share/nginx/html"
 default['wp-authoring']['wp']['dbHost'] = "cms-wordpress-authoring-db-preprod-us-west-2.preprod-cms.a.intuit.net:3306"
 default['wp-authoring']['deploy']['download_dir'] = "/deploy/artifacts"
 default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
-                                                 "utility-client", 
                                                  "plugin-advanced-custom-fields-pro", 
                                                  "CustomFields",
                                                  "plugin-miniorange-saml-20-single-sign-on",
