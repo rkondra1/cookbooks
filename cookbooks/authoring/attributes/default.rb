@@ -11,6 +11,7 @@ default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-advanced-custom-fields-pro", 
                                                  "CustomFields",
                                                  "plugin-miniorange-saml-20-single-sign-on",
+                                                 "plugin-user-role-editor-pro",
                                                  "plugin-oasis-workflow-pro",
                                                  "plugin-sucuri-scanner"
                                                 ]
