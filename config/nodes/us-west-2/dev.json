@@ -31,15 +31,7 @@
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
     "recipe[nginx::1.8.0-2]",
-    "recipe[authoring]",
-    "recipe[authoring::nginx]",
-    "recipe[authoring::php-fpm]",
-    "recipe[authoring::dnsmasq]",
-    "recipe[authoring::wp]",
-    "recipe[authoring::plugins]",
-    "recipe[authoring::appd_php]",
-    "recipe[authoring::start_server]",
-    "recipe[authoring::deep_healthcheck]"
+    "recipe[authoring]"
 
   ]
 }
