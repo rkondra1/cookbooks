@@ -6,6 +6,7 @@
 include_recipe "authoring::nginx"
 include_recipe "authoring::php-fpm"
 include_recipe "authoring::dnsmasq"
+include_recipe "authoring::jms_client"
 include_recipe "authoring::wp"
 include_recipe "authoring::plugins"
 include_recipe "authoring::appd_php"

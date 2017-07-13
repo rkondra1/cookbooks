@@ -34,7 +34,7 @@ end
 execute "extract environment config files " do
   command "unzip -o #{node['wp-authoring']['deploy']['download_dir']}/*#{node['wp-authoring']['wp']['config_zip_name']}*.zip && mv #{node['wp-authoring']['deploy']['download_dir']}/wordpress-configs/* #{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/ && mv #{node['wp-authoring']['deploy']['download_dir']}/php-configs/* /etc/"
   user "root"
-  group "root" 
+  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
 end
 
 #Create healthcheck directory

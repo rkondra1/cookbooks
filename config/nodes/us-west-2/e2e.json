@@ -20,6 +20,12 @@
       "env": "e2e"
     }
   },
+  "deploy-jms-client":{
+    "jms-java-options":{
+      "ENV": "e2e_us-west-2"
+    }
+  },
+
 
   "run_list": [
     "recipe[secrets]",

@@ -19,6 +19,11 @@
       "env": "opstest"
     }
   },
+  "deploy-jms-client":{
+    "jms-java-options":{
+      "ENV": "dev_us-west-2"
+    }
+  },
 
   "run_list": [
     "recipe[secrets]",
