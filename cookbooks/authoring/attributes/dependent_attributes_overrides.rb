@@ -32,6 +32,9 @@ override['splunk']['inputs']['monitors'] = {
   '/var/log/php-fpm/*.log' => {
     'sourcetype' => 'log4j',
   },
+  '/app/jms-client/logs/*.log' => {
+    'sourcetype' => 'log4j',
+  },
 
   #The below derived attributes may not work in the case of wrapper cookbooks overriding install folder or tenant name
 
