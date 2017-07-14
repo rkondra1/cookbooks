@@ -21,7 +21,7 @@
   },
   "deploy-jms-client":{
     "jms-java-options":{
-      "JAVA_OPTS": "DENV=opstest_us-west-2"
+      "JAVA_OPTS": "-DENV=opstest_us-west-2"
     }
   },
 

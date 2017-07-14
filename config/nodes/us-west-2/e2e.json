@@ -22,7 +22,7 @@
   },
   "deploy-jms-client":{
     "jms-java-options":{
-      "JAVA_OPTS": "DENV=e2e_us-west-2"
+      "JAVA_OPTS": "-DENV=e2e_us-west-2"
     }
   },
 
