@@ -5,31 +5,26 @@ define('SUCCESS_HTTP_CODE', 200);
 
 
 
-function cleanup($handle,$downstream_response){
+function cleanup($handle,$downstream_response,$output){
+      echo $output;
       http_response_code($downstream_response);
       curl_close($handle);
       exit(1);
 }
 
 
-function local_health($handle){
+function wp_health($handle){
 
-  curl_setopt($handle, CURLOPT_URL, "http://localhost:<%=node['nginx']['server']['healthcheck']['listen_port']%>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/?rest_route=");
+  curl_setopt($handle, CURLOPT_URL, "http://localhost:<%=node['nginx']['server']['healthcheck']['listen_port']%>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/wp-load.php");
   curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
   $output = curl_exec($handle);
   $info   = curl_getinfo($handle);
   $downstream_response = $info['http_code'];
   if ($downstream_response != SUCCESS_HTTP_CODE) {
     echo "Health check Fail. Wordpress returned a ".$downstream_response;
-    cleanup($handle,$downstream_response);
+    cleanup($handle,$downstream_response,$output);
   }
   
-  
-  else if(strpos($output, "<%=node['wp-authoring']['healthcheck']['compare_string']%>") === false) {
-      echo "Health Check Fail";
-      cleanup($handle,INTERNAL_SERVER_ERROR_HTTP_CODE);
-      
-  }
-}
+ }
 
 ?>

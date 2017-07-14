@@ -31,11 +31,25 @@ template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authorin
 end
 
 #Extract env config files to proper location
-execute "extract environment config files " do
-  command "unzip -o #{node['wp-authoring']['deploy']['download_dir']}/*#{node['wp-authoring']['wp']['config_zip_name']}*.zip -d #{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/"
-  user "nginx"
-  group "nginx" 
+execute "extract config zip" do
+  command "unzip -o *#{node['wp-authoring']['wp']['config_zip_name']}*.zip "
+  user "root"
+  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
 end
+
+execute "copy environment config files" do
+  command "cp wordpress-configs/* #{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/"
+  user "nginx"
+  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
+end
+
+
+execute "copy php configs" do
+  command "cp -r php-configs/* /etc/"
+  user "root"
+  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
+end
+
 
 #Create healthcheck directory
 directory "#{node['wp-authoring']['nginx']['install_folder']}/health" do

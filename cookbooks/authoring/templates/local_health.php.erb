@@ -6,7 +6,7 @@ $handle = curl_init();
 
 //Is wordpress Up?
 
-local_health($handle);
+wp_health($handle);
 
 curl_close($handle);
 echo "Its an OK";

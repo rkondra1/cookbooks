@@ -32,6 +32,9 @@ override['splunk']['inputs']['monitors'] = {
   '/var/log/php-fpm/*.log' => {
     'sourcetype' => 'log4j',
   },
+  '/app/jms-client/logs/*.log' => {
+    'sourcetype' => 'log4j',
+  },
 
   #The below derived attributes may not work in the case of wrapper cookbooks overriding install folder or tenant name
 
@@ -55,7 +58,8 @@ override['wp-authoring']['host'] = "#{node['wp-authoring']['wp']['env']}-#{node[
 #nginx recipe
 override['nginx']['use_proxy_protocol_configs'] = true
 override['nginx']['suppress_automatic_semicolon'] = true
-override['nginx']['clientMaxBodySize'] = '20m'
+override['nginx']['clientMaxBodySize'] = '5m'
+override['nginx']['logType'] = "json"
 override['nginx']['proxy_protocol_support_443'] = "default_server ssl proxy_protocol"
 override['nginx']['sslCert'] = "/etc/ssl/server.pem"
 override['nginx']['sslKey'] = "/etc/ssl/server.key"
@@ -67,8 +71,6 @@ override['nginx']['server']['ssl_proxy_protocol'] = {
                         "index index.php;",
                         "real_ip_header proxy_protocol;",
                         "proxy_http_version 1.1;",
-                        "proxy_set_header X-Forwarded-For $proxy_protocol_addr;",
-                        "proxy_set_header X-Real-IP $proxy_protocol_addr;",
                         "include /etc/nginx/location-conf.d/ssl-wordpress.conf;"
                 ]
   }]
@@ -88,3 +90,12 @@ override['nginx']['upstream'] = false
 #database credential secret's name
 override['wp-authoring']['wp']['dbUser'] = "db_username"
 override['wp-authoring']['wp']['dbPassword'] = "db_password"
+
+
+
+
+override['deploy-jms-client']['jms_install_dir'] = "/app/jms-client"
+override['deploy-jms-client']['jms_app_owner'] = "root"
+override['deploy-jms-client']['jms_app_group'] = "root"
+override['deploy-jms-client']['jms_client_location'] = "#{node['wp-authoring']['deploy']['download_dir']}"
+override['deploy-jms-client']['jms_client_name'] = "wordpress-jms-client"

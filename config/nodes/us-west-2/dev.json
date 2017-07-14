@@ -20,6 +20,11 @@
       "env": "dev"
     }
   },
+  "deploy-jms-client":{
+    "jms-java-options":{
+      "JAVA_OPTS": "-DENV=dev_us-west-2"
+    }
+  },
 
   "run_list": [
     "recipe[secrets]",
@@ -27,5 +32,6 @@
     "recipe[overrides::deploy_secrets]",
     "recipe[nginx::1.8.0-2]",
     "recipe[authoring]"
+
   ]
 }

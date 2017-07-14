@@ -6,7 +6,7 @@ $handle = curl_init();
 
 
 //Is wordpress up
-local_health($handle);
+wp_health($handle);
 
 
 //Downstream checks
@@ -17,7 +17,7 @@ $info   = curl_getinfo($handle);
 $downstream_response = $info['http_code'];
 if ($downstream_response != SUCCESS_HTTP_CODE) {
   echo "Health check Fail. CAS returned a ".$downstream_response;
-  cleanup($handle,$downstream_response);
+  cleanup($handle,$downstream_response,$output);
 }
 
 
