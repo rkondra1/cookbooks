@@ -12,6 +12,7 @@ include_recipe "authoring::plugins"
 include_recipe "authoring::appd_php"
 include_recipe "authoring::permissions"
 include_recipe "authoring::start_server"
+include_recipe "authoring::start_jms_client"
 include_recipe "authoring::deep_healthcheck"
 
 
