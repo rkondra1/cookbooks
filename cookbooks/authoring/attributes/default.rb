@@ -18,6 +18,7 @@ default['wp-authoring']['appdynamics']['php_agent_tar'] = "appdynamics-php-agent
 default['wp-authoring']['appdynamics']['account'] = "intuittrial"
 default['wp-authoring']['appdynamics']['accesskeyfile'] = "appd_accesskey"
 default['wp-authoring']['appdynamics']['controller'] = "intuittrial.saas.appdynamics.com"
+default['wp-authoring']['appdynamics']['appname'] = "ctg_ctgu_authoring"
 default['wp-authoring']['wp']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/wordpress-artifacts"
 default['wp-authoring']['wp']['artifact_name'] = "wordpress-4.8.tar.gz"
 default['wp-authoring']['php']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/php-artifacts"
