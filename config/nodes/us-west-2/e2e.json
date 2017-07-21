@@ -18,6 +18,10 @@
     "wp": {
       "dbName": "wp_e2e",
       "env": "e2e"
+    },
+    "appdynamics":{
+      "appname":"ctg_ctgu_authoring_e2e",
+      "tiername":"authoring_web_component:php_location:aws_region:us-west-2"
     }
   },
   "deploy-jms-client":{
