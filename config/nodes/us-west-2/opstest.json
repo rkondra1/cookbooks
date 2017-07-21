@@ -17,7 +17,12 @@
     "wp": {
       "dbName": "wp_opstest",
       "env": "opstest"
+    },
+    "appdynamics":{
+      "appname":"ctg_ctgu_authoring_opstest",
+      "tiername":"authoring_web_component:php_location:aws_region:us-west-2"
     }
+
   },
   "deploy-jms-client":{
     "jms-java-options":{
