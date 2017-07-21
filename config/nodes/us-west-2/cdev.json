@@ -34,6 +34,8 @@
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
     "recipe[nginx::1.8.0-2]",
+    "recipe[appdynamics_machine_agent::4.2.12.1]",
+    "recipe[appdynamics_machine_agent::config]",
     "recipe[authoring]"
   ]
 }
