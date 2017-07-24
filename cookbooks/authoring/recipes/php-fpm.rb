@@ -3,7 +3,6 @@ node['wp-authoring']['php']['rpm_names'].each do |package|
     source "#{node['wp-authoring']['php']['artifact_bucket']}/#{package}"
     mode 0755
   end
-
   package "Installing #{package}" do
     action :install
     source "/tmp/#{package}"
