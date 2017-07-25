@@ -6,6 +6,8 @@ override['secrets']['shred_secrets']="false"
 override['secrets']['cli_source']="artifacts-749540722843-us-west-2"
 override['secrets']['cli_package']="secrets-cli-2.3.4.0-el6.rpm"
 
+override['wordpress']['install_location'] = "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}"
+
 #splunk cookbooks
 override['splunk']['inputs']['monitors'] = {
   '/opt/appdynamics/machine_agent/logs/machine-agent.log' => {
