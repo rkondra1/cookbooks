@@ -65,3 +65,8 @@ template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring
   backup false
 end
 
+remote_file "#{node['wp-authoring']['wp']['rds_ssl_ca_file']}" do
+  source "#{node['wordpress']['download_location']}/rds-combined-ca-bundle.pem"
+  mode 0755
+end
+

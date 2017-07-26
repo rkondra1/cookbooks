@@ -30,7 +30,8 @@ define('DB_PASSWORD', '<%= node.run_state['secrets']['data'][node['wp-authoring'
 
 /** MySQL hostname */
 define('DB_HOST', '<%= node['wp-authoring']['wp']['dbHost'] %>');
-
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+define('MYSQL_SSL_CA', '<%= node['wp-authoring']['wp']['rds_ssl_ca_file']%>');
 
 
 define('WP_ENV','<%= node['wp-authoring']['wp']['env'] %>');
