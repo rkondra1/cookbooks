@@ -6,6 +6,8 @@ override['secrets']['shred_secrets']="false"
 override['secrets']['cli_source']="artifacts-749540722843-us-west-2"
 override['secrets']['cli_package']="secrets-cli-2.3.4.0-el6.rpm"
 
+override['wordpress']['install_location'] = "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}"
+
 #splunk cookbooks
 override['splunk']['inputs']['monitors'] = {
   '/opt/appdynamics/machine_agent/logs/machine-agent.log' => {
@@ -102,5 +104,15 @@ override['wp-authoring']['wp']['dbPassword'] = "db_password"
 override['deploy-jms-client']['jms_install_dir'] = "/app/jms-client"
 override['deploy-jms-client']['jms_app_owner'] = "root"
 override['deploy-jms-client']['jms_app_group'] = "root"
-override['deploy-jms-client']['jms_client_location'] = "#{node['wp-authoring']['deploy']['download_dir']}"
+override['deploy-jms-client']['jms_client_location'] = node['wp-authoring']['deploy']['download_dir']
 override['deploy-jms-client']['jms_client_name'] = "wordpress-jms-client"
+
+#Hardcoding the keys till the parent cookbooks are changed to secret-cli
+override['appdynamics_machine_agent']['config']['controller']['host'] = node['wp-authoring']['appdynamics']['controller']
+override['appdynamics_machine_agent']['config']['controller']['port'] = "443"
+override['appdynamics_machine_agent']['config']['controller']['ssl'] = "true"
+override['appdynamics_machine_agent']['config']['controller']['account'] = node['wp-authoring']['appdynamics']['account']
+override['appdynamics_machine_agent']['config']['controller']['key'] = "kls8s5cdys0o"
+override['appdynamics_machine_agent']['config']['node_name'] = node['hostname']
+override['appdynamics_machine_agent']['config']['application_name'] = node['wp-authoring']['appdynamics']['appname']
+override['appdynamics_machine_agent']['config']['tier_name'] = node['wp-authoring']['appdynamics']['tiername']
