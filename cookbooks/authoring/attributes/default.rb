@@ -1,6 +1,6 @@
 default['wp-authoring']['domain_suffix'] = "preprod-cms.a.intuit.com"
 default['wp-authoring']['appname'] = "wp-authoring"
-default['wp-authoring']['nginx']['tenantName'] = "care"
+default['wp-authoring']['nginx']['tenantName'] = "cms"
 default['wp-authoring']['wp']['patch_zip'] = "wordpress-patches"
 default['wp-authoring']['wp']['config_zip_name']= "wp-environment-properties"
 default['wp-authoring']['nginx']['install_folder'] = "/usr/share/nginx/html"
