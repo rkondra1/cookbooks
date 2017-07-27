@@ -16,9 +16,9 @@ default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-sucuri-scanner"
                                                 ]
 default['wp-authoring']['appdynamics']['php_agent_tar'] = "appdynamics-php-agent-x64-linux-4.3.3.4.tar.bz2"
-default['wp-authoring']['appdynamics']['account'] = "intuittrial"
+default['wp-authoring']['appdynamics']['account'] = "intuit-dev"
 default['wp-authoring']['appdynamics']['accesskeyfile'] = "appd_accesskey"
-default['wp-authoring']['appdynamics']['controller'] = "intuittrial.saas.appdynamics.com"
+default['wp-authoring']['appdynamics']['controller'] = "intuit-dev.saas.appdynamics.com"
 default['wp-authoring']['appdynamics']['appname'] = "ctg_ctgu_authoring"
 default['wp-authoring']['appdynamics']['install_folder'] = "/opt/appdynamics/"
 
