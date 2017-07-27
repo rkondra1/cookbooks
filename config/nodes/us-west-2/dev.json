@@ -1,4 +1,3 @@
-
 {
   "secrets": {
     "prefix": [ "shared","wp-authoring/web/dev" ]
@@ -41,6 +40,7 @@
     "recipe[authoring::php-fpm]",
     "recipe[authoring::dnsmasq]",
     "recipe[authoring::wp]",
+    "recipe[authoring::wp-patch]",
     "recipe[authoring::plugins]",
     "recipe[authoring::appd_php]",
     "recipe[authoring::permissions]",
