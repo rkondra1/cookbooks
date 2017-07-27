@@ -21,6 +21,9 @@
     "appdynamics":{
       "appname":"ctg_ctgu_authoring_dev",
       "tiername":"authoring_web_component:php_location:aws_region:us-west-2"
+    },
+    "nginx":{
+      "tenantName": "care"
     }
   },
   "deploy-jms-client":{
