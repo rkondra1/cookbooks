@@ -13,7 +13,8 @@ default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-miniorange-saml-20-single-sign-on",
                                                  "plugin-user-role-editor-pro",
                                                  "plugin-oasis-workflow-pro",
-                                                 "plugin-sucuri-scanner"
+                                                 "plugin-sucuri-scanner",
+                                                 "plugin-wp-mail-smtp"
                                                 ]
 default['wp-authoring']['appdynamics']['php_agent_tar'] = "appdynamics-php-agent-x64-linux-4.3.3.4.tar.bz2"
 default['wp-authoring']['appdynamics']['account'] = "intuit-dev"
