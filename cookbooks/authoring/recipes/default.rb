@@ -1,5 +1,5 @@
 #
-# Cookbook:: test-wordpress
+# Cookbook:: authoring
 # Recipe:: default
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
