@@ -37,14 +37,12 @@ override['splunk']['inputs']['monitors'] = {
   '/app/jms-client/logs/*.log' => {
     'sourcetype' => 'log4j',
   },
-
-  #The below derived attributes may not work in the case of wrapper cookbooks overriding install folder or tenant name
-
   "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-content/debug.log" => {
     'sourcetype' => 'log4j',
   },
-
-
+  "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-content/uploads/sucuri/*.php" => {
+    'sourcetype' => 'json',
+  },
   "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-content/plugins/.../*.log" => {
     'sourcetype' => 'log4j',
   }
