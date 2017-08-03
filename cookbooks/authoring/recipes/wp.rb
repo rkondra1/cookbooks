@@ -26,7 +26,7 @@ end
 
 
 execute "copy php configs" do
-  command "cp -r php-configs/* /etc/"
+  command "cp -r php-configs/* /etc/php.d/"
   user "root"
   cwd "#{node['wp-authoring']['deploy']['download_dir']}"
 end
