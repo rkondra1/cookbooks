@@ -31,6 +31,7 @@
   },
 
   "run_list": [
+    "role[authoring]",
     "recipe[secrets]",
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",

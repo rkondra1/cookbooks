@@ -9,7 +9,7 @@ cookbook_path [
                 File.join(chef_home_dir, 'cookbooks'),
                 File.join(chef_home_dir, 'berks-cookbooks')
               ]
-#role_path File.join(chef_home_dir, 'roles')
+role_path File.join(chef_home_dir, 'roles')
 #data_bag_path File.join(chef_home_dir, 'data_bags')
 
 # Chef log file
