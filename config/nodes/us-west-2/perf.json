@@ -1,0 +1,56 @@
+
+{
+  "secrets": {
+    "prefix": [ "shared","wp-authoring/web/perf" ]
+  },
+  "splunk": {
+    "inputs": {
+      "index": "cms_perf_authoring_west2",
+      "fields": {
+        "appname": "wp-authoring",
+        "role": "web",
+        "region": "us-west-2",
+        "env": "perf"
+      }
+    }
+  },
+  "wp-authoring":{
+    "wp": {
+      "dbName": "wp_perf",
+      "env": "perf"
+    },
+    "appdynamics":{
+      "appname":"ctg_ctgu_authoring_perf",
+      "tiername":"authoring_web_component:php_location:aws_region:us-west-2"
+    },
+    "nginx":{
+      "tenantName": "cms"
+    }
+  },
+  "deploy-jms-client":{
+    "jms-java-options":{
+      "JAVA_OPTS": "-DENV=perf_us-west-2"
+    }
+  },
+
+  "run_list": [
+    "recipe[secrets]",
+    "recipe[splunk]",
+    "recipe[overrides::deploy_secrets]",
+    "recipe[nginx::1.8.0-2]",
+    "recipe[appdynamics_machine_agent::4.2.12.1]",
+    "recipe[appdynamics_machine_agent::config]",
+    "recipe[authoring::nginx]",
+    "recipe[authoring::php-fpm]",
+    "recipe[authoring::dnsmasq]",
+    "recipe[authoring::wp]",
+    "recipe[authoring::wp-patch]",
+    "recipe[authoring::plugins]",
+    "recipe[authoring::appd_php]",
+    "recipe[authoring::permissions]",
+    "recipe[authoring::start_server]",
+    "recipe[authoring::deep_healthcheck]"
+
+
+  ]
+}
