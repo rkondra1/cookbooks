@@ -18,12 +18,13 @@
     "wp": {
       "dbName": "wp_qa",
       "env": "qa"
-    },
-    "appdynamics":{
-      "appname":"ctg_ctgu_authoring_qa",
-      "tiername":"authoring_web_component:php_location:aws_region:us-west-2"
     }
-
+  },
+  "appdynamics_machine_agent":{
+    "config":{
+      "application_name":"ctg_ctgu_authoring_opstest",
+      "tier_name":"authoring_web_component:php_location:aws_region:us-west-2"
+    }
   },
   "deploy-jms-client":{
     "jms-java-options":{
@@ -32,12 +33,13 @@
   },
 
   "run_list": [
+    "role[authoring]",
     "recipe[secrets]",
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
+    "recipe[authoring::nginx]",
     "recipe[appdynamics_machine_agent::4.2.12.1]",
     "recipe[appdynamics_machine_agent::config]",
-    "recipe[nginx::1.8.0-2]",
     "recipe[authoring]"
   ]
 }

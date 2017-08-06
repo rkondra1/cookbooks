@@ -16,13 +16,6 @@ default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-sucuri-scanner",
                                                  "plugin-wp-mail-smtp"
                                                 ]
-default['wp-authoring']['appdynamics']['php_agent_tar'] = "appdynamics-php-agent-x64-linux-4.3.3.4.tar.bz2"
-default['wp-authoring']['appdynamics']['account'] = "intuit-dev"
-default['wp-authoring']['appdynamics']['accesskeyfile'] = "appd_accesskey"
-default['wp-authoring']['appdynamics']['controller'] = "intuit-dev.saas.appdynamics.com"
-default['wp-authoring']['appdynamics']['appname'] = "ctg_ctgu_authoring"
-default['wp-authoring']['appdynamics']['install_folder'] = "/opt/appdynamics/"
-
 default['wp-authoring']['wp']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/wordpress-artifacts"
 default['wp-authoring']['wp']['artifact_name'] = "wordpress-4.8.tar.gz"
 default['wp-authoring']['php']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/php-artifacts"

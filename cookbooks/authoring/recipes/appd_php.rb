@@ -1,4 +1,15 @@
 appd = node['wp-authoring']['appdynamics']['php_agent_tar']
+tiername = node['appdynamics_machine_agent']['config']['tier_name']
+appname =  node['appdynamics_machine_agent']['config']['application_name']
+
+directory node['wp-authoring']['appdynamics']['install_folder'] do
+   owner "root"
+   group "root"
+   action :create
+   mode '0755'
+   recursive true
+end
+
 remote_file "/tmp/#{appd}" do
   source "#{node['wp-authoring']['php']['artifact_bucket']}/#{appd}"
   mode 0755
@@ -27,9 +38,9 @@ execute 'install appd' do
           -e /usr/lib64/php/modules/ -i /etc/php.d/  \
           -v #{node['wp-authoring']['php']['version']} \
              #{node['wp-authoring']['appdynamics']['controller']} 443 \
-             #{node['wp-authoring']['appdynamics']['appname']} \
-             #{node['wp-authoring']['appdynamics']['tiername']} \
-             #{node['hostname']}"
+             #{appname} \
+             #{tiername} \
+             #{node['fqdn']}"
   user "root"
 end
 
