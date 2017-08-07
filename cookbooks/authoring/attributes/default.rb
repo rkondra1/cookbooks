@@ -10,11 +10,7 @@ default['wp-authoring']['deploy']['download_dir'] = "/deploy/artifacts"
 default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-advanced-custom-fields-pro", 
                                                  "CustomFields",
-                                                 "plugin-miniorange-saml-20-single-sign-on",
-                                                 "plugin-user-role-editor-pro",
-                                                 "plugin-oasis-workflow-pro",
-                                                 "plugin-sucuri-scanner",
-                                                 "plugin-wp-mail-smtp"
+                                                 "plugin-sucuri-scanner"
                                                 ]
 default['wp-authoring']['wp']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/wordpress-artifacts"
 default['wp-authoring']['wp']['artifact_name'] = "wordpress-4.8.tar.gz"
