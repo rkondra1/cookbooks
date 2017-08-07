@@ -53,5 +53,6 @@ default_attributes(
           'sourcetype' => 'log4j',
         }
       }
- 
+    }
+  }
 )
