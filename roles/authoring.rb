@@ -125,7 +125,7 @@ default_attributes(
 
       }
     },
-    'upstream' => 'false'
+    'upstream' => false
   },
   'deploy-jms-client' => {
     'jms_install_dir' => '/app/jms-client',
