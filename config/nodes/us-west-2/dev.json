@@ -17,9 +17,6 @@
     "wp": {
       "dbName": "wp_dev",
       "env": "dev"
-    },
-    "nginx":{
-      "tenantName": "care"
     }
   },
   "appdynamics_machine_agent":{
@@ -36,6 +33,7 @@
 
   "run_list": [
     "role[authoring]",
+    "role[override-tenant]",
     "recipe[secrets]",
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
