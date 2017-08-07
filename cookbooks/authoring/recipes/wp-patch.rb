@@ -13,7 +13,7 @@ end
 execute "extract patch zip" do
   command "unzip -o /tmp/#{patch}.zip "
   user "root"
-  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
+  cwd node['wp-authoring']['deploy']['download_dir']
 end
 
 
@@ -21,7 +21,7 @@ ENV['WORDPRESS_INSTALLATION_LOCATION'] = "#{node['wordpress']['install_location'
 
 execute "Apply patch" do
   command "./apply-patch.sh"
-  cwd "#{node['wp-authoring']['deploy']['download_dir']}" 
+  cwd node['wp-authoring']['deploy']['download_dir'] 
   user "root"
 end
 

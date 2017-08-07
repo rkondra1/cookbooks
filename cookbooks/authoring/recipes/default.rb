@@ -3,7 +3,6 @@
 # Recipe:: default
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
-include_recipe "authoring::nginx"
 include_recipe "authoring::php-fpm"
 include_recipe "authoring::dnsmasq"
 include_recipe "authoring::jms_client"

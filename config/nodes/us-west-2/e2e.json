@@ -18,10 +18,12 @@
     "wp": {
       "dbName": "wp_e2e",
       "env": "e2e"
-    },
-    "appdynamics":{
-      "appname":"ctg_ctgu_authoring_e2e",
-      "tiername":"authoring_web_component:php_location:aws_region:us-west-2"
+    }
+  },
+  "appdynamics_machine_agent":{
+    "config":{
+      "application_name":"ctg_ctgu_authoring_opstest",
+      "tier_name":"authoring_web_component:php_location:aws_region:us-west-2"
     }
   },
   "deploy-jms-client":{
@@ -31,10 +33,11 @@
   },
 
   "run_list": [
+    "role[authoring]",
     "recipe[secrets]",
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
-    "recipe[nginx::1.8.0-2]",
+    "recipe[authoring::nginx]",
     "recipe[appdynamics_machine_agent::4.2.12.1]",
     "recipe[appdynamics_machine_agent::config]",
     "recipe[authoring]"

@@ -15,20 +15,20 @@ end
 execute "extract config zip" do
   command "unzip -o *#{node['wp-authoring']['wp']['config_zip_name']}*.zip "
   user "root"
-  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
+  cwd node['wp-authoring']['deploy']['download_dir']
 end
 
 execute "copy environment config files" do
   command "cp wordpress-configs/* #{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/"
   user "nginx"
-  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
+  cwd node['wp-authoring']['deploy']['download_dir']
 end
 
 
 execute "copy php configs" do
-  command "cp -r php-configs/* /etc/"
+  command "cp -r php-configs/* /etc/php.d/"
   user "root"
-  cwd "#{node['wp-authoring']['deploy']['download_dir']}"
+  cwd node['wp-authoring']['deploy']['download_dir']
 end
 
 
@@ -65,7 +65,7 @@ template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring
   backup false
 end
 
-remote_file "#{node['wp-authoring']['wp']['rds_ssl_ca_file']}" do
+remote_file node['wp-authoring']['wp']['rds_ssl_ca_file'] do
   source "#{node['wordpress']['download_location']}/rds-combined-ca-bundle.pem"
   mode 0755
 end
