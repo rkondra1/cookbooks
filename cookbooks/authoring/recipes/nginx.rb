@@ -1,7 +1,7 @@
 authoring_host_name = "#{node['wp-authoring']['wp']['env']}-#{node['wp-authoring']['appname']}.#{node['wp-authoring']['domain_suffix']}"
 node.default['nginx']['server']['ssl_proxy_protocol']['locations'] = [{
     'path' => "/",
-    'options'=> [      "nginx /usr/share/nginx/html;",
+    'options'=> [      "root /usr/share/nginx/html;",
                        " if ($host != \"#{authoring_host_name}\"){return 301 https://#{authoring_host_name};}",
                         "index index.php;",
                         "real_ip_header proxy_protocol;",
