@@ -14,7 +14,8 @@ default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-user-role-editor-pro",
                                                  "plugin-oasis-workflow-pro",
                                                  "plugin-sucuri-scanner",
-                                                 "plugin-wp-mail-smtp"
+                                                 "plugin-wp-mail-smtp",
+                                                 "language-support"
                                                 ]
 default['wp-authoring']['wp']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/artifacts-749540722843-us-west-2/wordpress-artifacts"
 default['wp-authoring']['wp']['artifact_name'] = "wordpress-4.8.tar.gz"
