@@ -26,7 +26,7 @@ default['wp-authoring']['php']['rpm_names'] = [ "php71w-common-7.1.5-1.w6.x86_64
                                                 "php71w-xml-7.1.5-1.w6.x86_64.rpm",
                                                 "libmcrypt-2.5.7-1.2.el6.rf.x86_64.rpm",
                                                 "php71w-mcrypt-7.1.5-1.w6.x86_64.rpm"]
-
+default['wp-authoring']['rds_ssl_cert_location'] = "https://s3-us-west-2.amazonaws.com/ctgdevops-software/rds-public-certs/rds-combined-ca-bundle.pe://s3-us-west-2.amazonaws.com/ctgdevops-software/rds-public-certs"
 default['wp-authoring']['healthcheck']['compare_string'] = "Intuit Authoring"
 default['wp-authoring']['healthcheck']['deep_healthcheck_endpoint'] = "/health/deep.php"
 default['wp-authoring']['healthcheck']['common_healthcheck_code'] = "/health/common_health.php"

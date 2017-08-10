@@ -1,7 +1,6 @@
 #Installs wordpress, healhtchecks and configurations of wordpress
 #
 include_recipe("wordpress::install")
-
 #Override wp-config file
 template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-config.php" do
   mode 0755
@@ -55,7 +54,7 @@ end
 end
 
 remote_file node['wp-authoring']['wp']['rds_ssl_ca_file'] do
-  source "#{node['wordpress']['download_location']}/rds-combined-ca-bundle.pem"
+  source "#{node['wp-authoring']['rds_ssl_cert_location']}/rds-combined-ca-bundle.pem"
   mode 0755
 end
 
