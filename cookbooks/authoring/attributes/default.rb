@@ -17,8 +17,6 @@ default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-wp-mail-smtp",
                                                  "language-support"
                                                 ]
-default['wp-authoring']['wp']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8"
-default['wp-authoring']['wp']['artifact_name'] = "wordpress-4.8.tar.gz"
 default['wp-authoring']['php']['artifact_bucket'] = "https://s3-us-west-2.amazonaws.com/ctgdevops-software/php/7.1.5"
 default['wp-authoring']['php']['version'] = "7.1.5"
 default['wp-authoring']['php']['rpm_names'] = [ "php71w-common-7.1.5-1.w6.x86_64.rpm",
