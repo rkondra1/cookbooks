@@ -11,7 +11,7 @@ directory node['wp-authoring']['appdynamics']['install_folder'] do
 end
 
 remote_file "/tmp/#{appd}" do
-  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{appd}"
+  source "#{appd}"
   mode 0755
 end
 
