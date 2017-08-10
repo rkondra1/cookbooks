@@ -1,7 +1,7 @@
 #Download wordpress tar from s3
 remote_file "/tmp/wordpress.tar.gz" do
   source "#{node['wordpress']['download_location']}/#{node['wordpress']['download_filename']}"
-  mode 0755
+  mode '0755'
 end
 
 
@@ -11,7 +11,6 @@ directory node['wordpress']['install_location'] do
   group node['wordpress']['group']
   mode '1755'
   recursive  
-  action :create
 end
 
 #Wordpress Installation
@@ -22,7 +21,7 @@ end
 
 #Create wp-config file
 template "#{node['wordpress']['install_location']}/wordpress/wp-config.php" do
-  mode 0755
+  mode '0755'
   source "wp-conf.erb"
   owner node['wordpress']['user']
   group node['wordpress']['group']
