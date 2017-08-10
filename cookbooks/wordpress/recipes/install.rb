@@ -1,5 +1,5 @@
 #Download wordpress tar from s3
-remote_file "/tmp/wordpress.tar.gz" do
+remote_file "#{Chef::Config[:file_cache_path]}/wordpress.tar.gz" do
   source "#{node['wordpress']['download_location']}/#{node['wordpress']['download_filename']}"
   mode '0755'
 end
@@ -15,7 +15,7 @@ end
 
 #Wordpress Installation
 execute 'unzip wordpress to location' do
-  command "tar xf /tmp/wordpress.tar.gz -C #{node['wordpress']['install_location']}/"
+  command "tar xf #{Chef::Config[:file_cache_path]}/wordpress.tar.gz -C #{node['wordpress']['install_location']}/"
   user node['wordpress']['user']
 end
 
