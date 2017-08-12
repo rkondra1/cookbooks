@@ -1,7 +1,7 @@
 default['wp-authoring']['domain_suffix'] = "preprod-cms.a.intuit.com"
 default['wp-authoring']['appname'] = "wp-authoring"
 default['wp-authoring']['nginx']['tenantName'] = "cms"
-default['wp-authoring']['wp']['patch_zip'] = "wordpress-patches"
+default['wp-authoring']['wp']['patch_zip'] = "wordpress-4.8-patches"
 default['wp-authoring']['wp']['config_zip_name']= "wp-environment-properties"
 default['wp-authoring']['nginx']['install_folder'] = "/usr/share/nginx/html"
 default['wp-authoring']['wp']['dbHost'] = "cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306"
@@ -26,10 +26,7 @@ default['wp-authoring']['php']['rpm_names'] = [ "php71w-common-7.1.5-1.w6.x86_64
                                                 "php71w-xml-7.1.5-1.w6.x86_64.rpm",
                                                 "libmcrypt-2.5.7-1.2.el6.rf.x86_64.rpm",
                                                 "php71w-mcrypt-7.1.5-1.w6.x86_64.rpm"]
-default['wp-authoring']['rds_ssl_cert_location'] = "https://s3-us-west-2.amazonaws.com/ctgdevops-software/rds-public-certs/rds-combined-ca-bundle.pe://s3-us-west-2.amazonaws.com/ctgdevops-software/rds-public-certs"
+default['wp-authoring']['rds_ssl_cert_location'] = "https://s3-us-west-2.amazonaws.com/ctgdevops-software/rds-public-certs"
 default['wp-authoring']['healthcheck']['compare_string'] = "Intuit Authoring"
-default['wp-authoring']['healthcheck']['deep_healthcheck_endpoint'] = "/health/deep.php"
-default['wp-authoring']['healthcheck']['common_healthcheck_code'] = "/health/common_health.php"
-default['wp-authoring']['healthcheck']['local_healthcheck_endpoint'] = "/health/local.php"
 
 default['wp-authoring']['CAS']['healthcheck_endpoint'] = "/health/local"

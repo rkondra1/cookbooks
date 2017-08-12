@@ -40,13 +40,13 @@ directory "#{node['wp-authoring']['nginx']['install_folder']}/health" do
   action :create
 end
 
-[ "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['deep_healthcheck_endpoint']}",
-  "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['common_healthcheck_code']}",
-  "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['local_healthcheck_endpoint']}"
+[ "deep.php",
+  "common_health.php",
+  "local.php"
 ].each do | file |
-  template file do
+  template "#{node['wp-authoring']['nginx']['install_folder']}/health/#{file}" do
   mode 0755
-  source "deep_health.php.erb"
+  source "#{file}.erb"
   owner "nginx"
   group "nginx"
   backup false
