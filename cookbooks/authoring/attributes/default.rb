@@ -4,7 +4,6 @@ default['wp-authoring']['nginx']['tenantName'] = "cms"
 default['wp-authoring']['wp']['patch_zip'] = "wordpress-4.8-patches"
 default['wp-authoring']['wp']['config_zip_name']= "wp-environment-properties"
 default['wp-authoring']['nginx']['install_folder'] = "/usr/share/nginx/html"
-default['wp-authoring']['wp']['dbHost'] = "cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306"
 default['wp-authoring']['wp']['rds_ssl_ca_file'] = "/usr/share/nginx/html/rds-combined-ca-bundle.pem"
 default['wp-authoring']['deploy']['download_dir'] = "/deploy/artifacts"
 default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,

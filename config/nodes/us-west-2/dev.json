@@ -32,7 +32,7 @@
   },
 
   "run_list": [
-    "role[authoring]",
+    "role[preproduction]",
     "role[override-tenant]",
     "recipe[secrets]",
     "recipe[splunk]",
