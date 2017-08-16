@@ -1,4 +1,4 @@
-name 'production'
+name 'preproduction'
 NGINX_INSTALL_LOCATION = '/usr/share/nginx/html'
 TENANT_NAME = 'cms'
 WORDPRESS_INSTALL_LOCATION = "#{NGINX_INSTALL_LOCATION}/#{TENANT_NAME}"
@@ -10,7 +10,7 @@ APPD_PHP_AGENT_TAR = 'appdynamics-php-agent-x64-linux-4.3.3.4.tar.bz2'
 APPD_ACCESSKEY_FILE = 'appd_accesskey'
 APPD_ACCESSKEY = 'fn6174mcal8r'
 APPD_PHP_INSTALL_FOLDER = '/opt/appdynamics/php-agent'
-SECRETS_BUCKET = 'iss-549075299630-us-west-2'
+SECRETS_BUCKET = 'iss-749540722843-us-west-2'
 
 default_attributes(
   'secrets' => {
@@ -18,8 +18,8 @@ default_attributes(
     'secrets_s3_bucket' => SECRETS_BUCKET,
     'kms_cmk_id' => SECRETS_BUCKET,
     'shred_secrets' => 'false',
-    'cli_source' => 'artifacts-549075299630-us-west-2',
-    'cli_package' => 'secrets-cli-2.3.4.0.rpm'
+    'cli_source' => 'artifacts-749540722843-us-west-2',
+    'cli_package' => 'secrets-cli-2.3.4.0-el6.rpm'
   },
   'wp-authoring' => {
     'appdynamics' =>{
@@ -34,6 +34,7 @@ default_attributes(
       'dbUser' => 'db_username',
       'dbPassword' => 'db_password',
       'dbHost' => 'cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306'
+      
     },
     'nginx' => {
       'install_folder' => NGINX_INSTALL_LOCATION,
@@ -101,8 +102,8 @@ default_attributes(
 
   },
   'overrides' => {
-    'wildcardcert_key' => 'authoring_cert_key',
-    'wildcardcert_pub' => 'authoring_cert_pem'
+    'wildcardcert_key' => 'wildcardcert_key',
+    'wildcardcert_pub' => 'wildcardcert_pub'
   },
   'nginx' => {
     'use_proxy_protocol_configs' => true,
