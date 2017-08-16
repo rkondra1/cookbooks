@@ -4,5 +4,6 @@ default_attributes(
    'wp' => {
      'hostname' => 'authoring.cms.a.intuit.com'
     }
+  }
     
 )
