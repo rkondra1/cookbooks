@@ -33,6 +33,7 @@
 
   "run_list": [
     "role[authoring]",
+    "role[production]",
     "recipe[secrets]",
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
