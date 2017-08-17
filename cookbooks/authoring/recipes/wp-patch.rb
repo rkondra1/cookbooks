@@ -1,6 +1,6 @@
-patch = node['wp-authoring']['wp']['patch_zip']
+patch = "wp-patch"
 remote_file "/tmp/#{patch}.zip" do
-  source "#{node['wordpress']['download_location']}/#{patch}.zip"
+  source "#{node['wp-authoring']['wp']['patch_download_location']}"
   mode 0755
 end
 

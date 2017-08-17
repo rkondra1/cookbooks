@@ -1,10 +1,11 @@
-name 'authoring'
+name 'preproduction'
 NGINX_INSTALL_LOCATION = '/usr/share/nginx/html'
 TENANT_NAME = 'cms'
 WORDPRESS_INSTALL_LOCATION = "#{NGINX_INSTALL_LOCATION}/#{TENANT_NAME}"
 ARTIFACT_DOWNLOAD_LOCATION = '/deploy/artifacts'
 APPD_ACCOUNT = 'intuit-dev'
 APPD_CONTROLLER_HOST = 'intuit-dev.saas.appdynamics.com'
+APPD_PHP_AGENT_BUCKET = 'https://s3-us-west-2.amazonaws.com/ctgdevops-software/appdynamics/php-agent'
 APPD_PHP_AGENT_TAR = 'appdynamics-php-agent-x64-linux-4.3.3.4.tar.bz2'
 APPD_ACCESSKEY_FILE = 'appd_accesskey'
 APPD_ACCESSKEY = 'fn6174mcal8r'
@@ -23,6 +24,7 @@ default_attributes(
   'wp-authoring' => {
     'appdynamics' =>{
       'php_agent_tar' => APPD_PHP_AGENT_TAR,
+      'php_agent_bucket' => APPD_PHP_AGENT_BUCKET,
       'account' => APPD_ACCOUNT,
       'accesskeyfile' => APPD_ACCESSKEY_FILE,
       'controller' => APPD_CONTROLLER_HOST,
@@ -30,7 +32,9 @@ default_attributes(
     },
   'wp' => {
       'dbUser' => 'db_username',
-      'dbPassword' => 'db_password'
+      'dbPassword' => 'db_password',
+      'dbHost' => 'cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306'
+      
     },
     'nginx' => {
       'install_folder' => NGINX_INSTALL_LOCATION,

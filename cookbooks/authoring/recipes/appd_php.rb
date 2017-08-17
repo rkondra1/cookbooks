@@ -1,3 +1,4 @@
+appd_bucket = node['wp-authoring']['appdynamics']['php_agent_bucket']
 appd = node['wp-authoring']['appdynamics']['php_agent_tar']
 tiername = node['appdynamics_machine_agent']['config']['tier_name']
 appname =  node['appdynamics_machine_agent']['config']['application_name']
@@ -11,7 +12,7 @@ directory node['wp-authoring']['appdynamics']['install_folder'] do
 end
 
 remote_file "/tmp/#{appd}" do
-  source "#{node['wp-authoring']['php']['artifact_bucket']}/#{appd}"
+  source "#{appd_bucket}/#{appd}"
   mode 0755
 end
 

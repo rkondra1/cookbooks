@@ -1,7 +1,6 @@
 #Installs wordpress, healhtchecks and configurations of wordpress
 #
-include_recipe("wordpress::install")
-
+include_recipe("wordpress::4.8")
 #Override wp-config file
 template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-config.php" do
   mode 0755
@@ -41,32 +40,21 @@ directory "#{node['wp-authoring']['nginx']['install_folder']}/health" do
   action :create
 end
 
-template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['deep_healthcheck_endpoint']}" do
+[ "deep.php",
+  "common_health.php",
+  "local.php"
+].each do | file |
+  template "#{node['wp-authoring']['nginx']['install_folder']}/health/#{file}" do
   mode 0755
-  source "deep_health.php.erb"
+  source "#{file}.erb"
   owner "nginx"
   group "nginx"
   backup false
 end
-
-template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['common_healthcheck_code']}" do
-  mode 0755
-  source "common_health.php.erb"
-  owner "nginx"
-  group "nginx"
-  backup false
-end
-
-template "#{node['wp-authoring']['nginx']['install_folder']}#{node['wp-authoring']['healthcheck']['local_healthcheck_endpoint']}" do
-  mode 0755
-  source "local_health.php.erb"
-  owner "nginx"
-  group "nginx"
-  backup false
 end
 
 remote_file node['wp-authoring']['wp']['rds_ssl_ca_file'] do
-  source "#{node['wordpress']['download_location']}/rds-combined-ca-bundle.pem"
+  source "#{node['wp-authoring']['rds_ssl_cert_location']}/rds-combined-ca-bundle.pem"
   mode 0755
 end
 

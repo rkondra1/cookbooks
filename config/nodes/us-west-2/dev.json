@@ -32,7 +32,7 @@
   },
 
   "run_list": [
-    "role[authoring]",
+    "role[preproduction]",
     "role[override-tenant]",
     "recipe[secrets]",
     "recipe[splunk]",
@@ -45,7 +45,6 @@
     "recipe[authoring::wp]",
     "recipe[authoring::wp-patch]",
     "recipe[authoring::plugins]",
-    "recipe[authoring::appd_php]",
     "recipe[authoring::permissions]",
     "recipe[authoring::start_server]",
     "recipe[authoring::deep_healthcheck]"

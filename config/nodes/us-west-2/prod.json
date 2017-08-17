@@ -1,24 +1,23 @@
-
 {
   "secrets": {
-    "prefix": [ "shared","wp-authoring/web/perf" ]
+    "prefix": [ "shared","wp-authoring/web/prod" ]
   },
   "splunk": {
     "inputs": {
-      "index": "cms_perf_authoring_west2",
+      "index": "cms_prod_authoring_west2",
       "fields": {
         "appname": "wp-authoring",
         "role": "web",
         "region": "us-west-2",
-        "env": "perf"
+        "env": "prod"
       }
     }
   },
   "wp-authoring":{
     "wp": {
-      "dbName": "wp_perf",
-      "env": "perf"
-    }  
+      "dbName": "wp_prod",
+      "env": "prod"
+    }
   },
   "appdynamics_machine_agent":{
     "config":{
@@ -28,28 +27,18 @@
   },
   "deploy-jms-client":{
     "jms-java-options":{
-      "JAVA_OPTS": "-DENV=perf_us-west-2"
+      "JAVA_OPTS": "-DENV=prod_us-west-2"
     }
   },
 
   "run_list": [
-    "role[preproduction]",
+    "role[production]",
     "recipe[secrets]",
     "recipe[splunk]",
     "recipe[overrides::deploy_secrets]",
     "recipe[authoring::nginx]",
     "recipe[appdynamics_machine_agent::4.2.12.1]",
     "recipe[appdynamics_machine_agent::config]",
-    "recipe[authoring::php-fpm]",
-    "recipe[authoring::dnsmasq]",
-    "recipe[authoring::wp]",
-    "recipe[authoring::wp-patch]",
-    "recipe[authoring::plugins]",
-    "recipe[authoring::appd_php]",
-    "recipe[authoring::permissions]",
-    "recipe[authoring::start_server]",
-    "recipe[authoring::deep_healthcheck]"
-
-
+    "recipe[authoring]"
   ]
 }

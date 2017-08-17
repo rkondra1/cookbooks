@@ -3,5 +3,5 @@
 
 server {
     listen 80 default_server;
-    return 301 https://<%= node['wp-authoring']['wp']['env'] %>-<%= node['wp-authoring']['appname']%>.<%= node['wp-authoring']['domain_suffix'] %>$request_uri;
+    return 301 https://<%= node.default['wp-authoring']['wp']['hostname'] %>$request_uri;
 }
