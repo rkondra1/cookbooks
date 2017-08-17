@@ -1,10 +1,11 @@
 default['wp-authoring']['domain_suffix'] = "preprod-cms.a.intuit.com"
 default['wp-authoring']['appname'] = "wp-authoring"
 default['wp-authoring']['nginx']['tenantName'] = "cms"
-default['wp-authoring']['wp']['patch_zip'] = "wordpress-4.8-patches"
+default['wp-authoring']['wp']['patch_zip'] = "wordpress-patches"
 default['wp-authoring']['wp']['config_zip_name']= "wp-environment-properties"
 default['wp-authoring']['nginx']['install_folder'] = "/usr/share/nginx/html"
 default['wp-authoring']['wp']['rds_ssl_ca_file'] = "/usr/share/nginx/html/rds-combined-ca-bundle.pem"
+default['wp-authoring']['wp']['patch_download_location'] = "https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8/wordpress-patches.zip"
 default['wp-authoring']['deploy']['download_dir'] = "/deploy/artifacts"
 default['wp-authoring']['deploy']['plugins'] = [ "content-transformer" ,
                                                  "plugin-advanced-custom-fields-pro", 
