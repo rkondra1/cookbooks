@@ -11,13 +11,13 @@ directory node['wp-authoring']['appdynamics']['install_folder'] do
    recursive true
 end
 
-remote_file "/tmp/#{appd}" do
+remote_file "#{Chef::Config[:file_cache_path]}/#{appd}" do
   source "#{appd_bucket}/#{appd}"
   mode 0755
 end
 
 execute 'untar the appd file' do
-  command "tar -xvjf /tmp/#{appd} -C #{node['wp-authoring']['appdynamics']['install_folder']}"
+  command "tar -xvjf #{Chef::Config[:file_cache_path]}/#{appd} -C #{node['wp-authoring']['appdynamics']['install_folder']}"
   user "root"
 end
 

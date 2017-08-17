@@ -1,9 +1,11 @@
 name 'authoring'
 maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer_email 'joseph_joice@intuit.com'
 license 'all_rights'
 description 'Installs/Configures wordpress'
 long_description 'Installs/Configures wordpress'
+issues_url 'https://github.intuit.com/ContentMgmt/authoring-wp-cookbooks/issues'
+source_url 'https://github.intuit.com/ContentMgmt/authoring-wp-cookbooks'
 version '0.1.0'
 
 # The `issues_url` points to the location where issues for this cookbook are

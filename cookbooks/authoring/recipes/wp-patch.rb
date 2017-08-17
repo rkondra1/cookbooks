@@ -1,6 +1,6 @@
 patch = "wp-patch"
-remote_file "/tmp/#{patch}.zip" do
-  source "#{node['wp-authoring']['wp']['patch_download_location']}"
+remote_file "#{Chef::Config[:file_cache_path]}/#{patch}.zip" do
+  source node['wp-authoring']['wp']['patch_download_location']
   mode 0755
 end
 
@@ -11,7 +11,7 @@ cookbook_file "#{node['wp-authoring']['deploy']['download_dir']}/apply-patch.sh"
 end
 
 execute "extract patch zip" do
-  command "unzip -o /tmp/#{patch}.zip "
+  command "unzip -o  #{Chef::Config[:file_cache_path]}/#{patch}.zip "
   user "root"
   cwd node['wp-authoring']['deploy']['download_dir']
 end

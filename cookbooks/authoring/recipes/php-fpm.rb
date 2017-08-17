@@ -1,11 +1,11 @@
 node['wp-authoring']['php']['rpm_names'].each do |package|
-  remote_file "/tmp/#{package}" do
+  remote_file "#{Chef::Config[:file_cache_path]}/#{package}" do
     source "#{node['wp-authoring']['php']['artifact_bucket']}/#{package}"
     mode 0755
   end
   package "Installing #{package}" do
     action :install
-    source "/tmp/#{package}"
+    source "#{Chef::Config[:file_cache_path]}/#{package}"
     provider Chef::Provider::Package::Rpm
   end
 end
