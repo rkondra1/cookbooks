@@ -1,60 +1,56 @@
-#Installs wordpress, healhtchecks and configurations of wordpress
+# Installs wordpress, healhtchecks and configurations of wordpress
 #
-include_recipe("wordpress::4.8")
-#Override wp-config file
+include_recipe('wordpress::4.8')
+# Override wp-config file
 template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-config.php" do
-  mode 0755
-  source "wp-conf.erb"
-  owner "nginx"
-  group "nginx"
+  mode 0o755
+  source 'wp-conf.erb'
+  owner 'nginx'
+  group 'nginx'
   backup false
 end
 
-#Extract env config files to proper location
-execute "extract config zip" do
+# Extract env config files to proper location
+execute 'extract config zip' do
   command "unzip -o *#{node['wp-authoring']['wp']['config_zip_name']}*.zip "
-  user "root"
+  user 'root'
   cwd node['wp-authoring']['deploy']['download_dir']
 end
 
-execute "copy environment config files" do
+execute 'copy environment config files' do
   command "cp wordpress-configs/* #{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/"
-  user "nginx"
+  user 'nginx'
   cwd node['wp-authoring']['deploy']['download_dir']
 end
 
-
-execute "copy php configs" do
-  command "cp -r php-configs/* /etc/php.d/"
-  user "root"
+execute 'copy php configs' do
+  command 'cp -r php-configs/* /etc/php.d/'
+  user 'root'
   cwd node['wp-authoring']['deploy']['download_dir']
 end
 
-
-#Create healthcheck directory
+# Create healthcheck directory
 directory "#{node['wp-authoring']['nginx']['install_folder']}/health" do
   owner 'nginx'
   group 'nginx'
   mode '1755'
-  recursive  
+  recursive
   action :create
 end
 
-[ "deep.php",
-  "common_health.php",
-  "local.php"
-].each do | file |
+['deep.php',
+ 'common_health.php',
+ 'local.php'].each do |file|
   template "#{node['wp-authoring']['nginx']['install_folder']}/health/#{file}" do
-  mode 0755
-  source "#{file}.erb"
-  owner "nginx"
-  group "nginx"
-  backup false
-end
+    mode 0o755
+    source "#{file}.erb"
+    owner 'nginx'
+    group 'nginx'
+    backup false
+  end
 end
 
 remote_file node['wp-authoring']['wp']['rds_ssl_ca_file'] do
   source "#{node['wp-authoring']['rds_ssl_cert_location']}/rds-combined-ca-bundle.pem"
-  mode 0755
+  mode 0o755
 end
-

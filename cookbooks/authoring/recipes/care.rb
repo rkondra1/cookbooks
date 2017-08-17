@@ -1,2 +1,2 @@
-node.set['wp-authoring']['nginx']['tenantName'] = "care"
+node.set['wp-authoring']['nginx']['tenantName'] = 'care'
 include_recipe 'authoring::default'

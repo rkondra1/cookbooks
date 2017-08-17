@@ -4,34 +4,33 @@ tiername = node['appdynamics_machine_agent']['config']['tier_name']
 appname =  node['appdynamics_machine_agent']['config']['application_name']
 
 directory node['wp-authoring']['appdynamics']['install_folder'] do
-   owner "root"
-   group "root"
-   action :create
-   mode '0755'
-   recursive true
+  owner 'root'
+  group 'root'
+  action :create
+  mode '0755'
+  recursive true
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{appd}" do
   source "#{appd_bucket}/#{appd}"
-  mode 0755
+  mode 0o755
 end
 
 execute 'untar the appd file' do
-  command "tar -xvjf #{Chef::Config[:file_cache_path]}/#{appd} -C #{node['wp-authoring']['appdynamics']['install_folder']}"
-  user "root"
+  command "tar -xvjf #{Chef::Config[:file_cache_path]}/#{appd} \
+           -C #{node['wp-authoring']['appdynamics']['install_folder']}"
+  user 'root'
 end
 
 execute 'permissions change for logs folder' do
   command "chmod -R 755 #{node['wp-authoring']['appdynamics']['install_folder']}/appdynamics-php-agent"
-  user "root"
+  user 'root'
 end
 
 execute 'permissions change for logs folder' do
   command "chmod -R 777 #{node['wp-authoring']['appdynamics']['install_folder']}/appdynamics-php-agent/logs"
-  user "root"
+  user 'root'
 end
-
-
 
 execute 'install appd' do
   command "#{node['wp-authoring']['appdynamics']['install_folder']}/appdynamics-php-agent/install.sh -s \
@@ -42,6 +41,5 @@ execute 'install appd' do
              #{appname} \
              #{tiername} \
              #{node['fqdn']}"
-  user "root"
+  user 'root'
 end
-
