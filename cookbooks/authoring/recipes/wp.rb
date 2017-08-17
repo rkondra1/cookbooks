@@ -1,6 +1,6 @@
 #Installs wordpress, healhtchecks and configurations of wordpress
 #
-include_recipe("wordpress::install")
+include_recipe("wordpress::4.8")
 #Override wp-config file
 template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-config.php" do
   mode 0755

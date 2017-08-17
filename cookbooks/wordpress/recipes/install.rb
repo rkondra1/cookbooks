@@ -1,6 +1,6 @@
 #Download wordpress tar from s3
 remote_file "#{Chef::Config[:file_cache_path]}/wordpress.tar.gz" do
-  source "#{node['wordpress']['download_location']}/#{node['wordpress']['download_filename']}"
+  source "#{node['wordpress']['download_location']}"
   mode '0755'
 end
 

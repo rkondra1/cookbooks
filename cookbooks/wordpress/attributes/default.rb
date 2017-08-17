@@ -1,6 +1,5 @@
 default['wordpress']['install_location'] = "/usr/share/nginx/html"
-default['wordpress']['download_location'] = "https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8" 
-default['wordpress']['download_filename'] = "wordpress-4.8.tar.gz" 
+default['wordpress']['download_location'] = "CHANGEME" 
 default['wordpress']['user'] = "nginx"
 default['wordpress']['group'] = "nginx"
 default['wordpress']['db_name'] = "mydb"
