@@ -40,16 +40,6 @@
     "recipe[authoring::nginx]",
     "recipe[appdynamics_machine_agent::4.2.12.1]",
     "recipe[appdynamics_machine_agent::config]",
-    "recipe[authoring::php_fpm]",
-    "recipe[authoring::dnsmasq]",
-    "recipe[authoring::wp]",
-    "recipe[authoring::wp_patch]",
-    "recipe[authoring::plugins]",
-    "recipe[authoring::appd_php]",
-    "recipe[authoring::permissions]",
-    "recipe[authoring::start_server]",
-    "recipe[authoring::deep_healthcheck]"
-
-
+    "recipe[authoring]"
   ]
 }
