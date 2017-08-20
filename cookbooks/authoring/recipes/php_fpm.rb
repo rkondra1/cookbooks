@@ -13,7 +13,8 @@ end
 template '/etc/php-fpm.d/www.conf' do
   mode 0o644
   source 'php-fpm.conf.erb'
-  owner 'root'
-  group 'root'
+  owner 'nginx'
+  group 'nginx'
   backup false
 end
+
