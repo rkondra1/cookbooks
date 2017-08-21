@@ -1,4 +1,3 @@
-service "wordpress-jms-client" do
-    action :start
+service 'wordpress-jms-client' do
+  action :start
 end
-
