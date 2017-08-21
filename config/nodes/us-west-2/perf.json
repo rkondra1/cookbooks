@@ -22,13 +22,21 @@
   },
   "appdynamics_machine_agent":{
     "config":{
-      "application_name":"ctg_ctgu_authoring_opstest",
-      "tier_name":"authoring_web_component:php_location:aws_region:us-west-2"
+      "application_name":"ctg_ctgu_authoring_perf",
+      "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
     }
   },
+  "appdynamics_java_agent":{
+    "config":{
+      "application_name":"ctg_ctgu_authoring_perf",
+      "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
+    }
+  },
+
   "deploy-jms-client":{
     "jms-java-options":{
-      "JAVA_OPTS": "-DENV=perf_us-west-2"
+      "JAVA_OPTS": "-DENV=perf_us-west-2 -javaagent:/opt/appdynamics/java_agent/javaagent.jar"
+      
     }
   },
 
@@ -40,6 +48,8 @@
     "recipe[authoring::nginx]",
     "recipe[appdynamics_machine_agent::4.2.12.1]",
     "recipe[appdynamics_machine_agent::config]",
+    "recipe[appdynamics_java_agent::4.2.12.1]",
+    "recipe[appdynamics_java_agent::config]",
     "recipe[authoring]"
   ]
 }

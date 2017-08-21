@@ -3,12 +3,12 @@ NGINX_INSTALL_LOCATION = '/usr/share/nginx/html'
 TENANT_NAME = 'cms'
 WORDPRESS_INSTALL_LOCATION = "#{NGINX_INSTALL_LOCATION}/#{TENANT_NAME}"
 ARTIFACT_DOWNLOAD_LOCATION = '/deploy/artifacts'
-APPD_ACCOUNT = 'intuit-dev'
-APPD_CONTROLLER_HOST = 'intuit-dev.saas.appdynamics.com'
+APPD_ACCOUNT = 'intuitAPM'
+APPD_CONTROLLER_HOST = 'intuitapm.saas.appdynamics.com'
 APPD_PHP_AGENT_BUCKET = 'https://s3-us-west-2.amazonaws.com/ctgdevops-software/appdynamics/php-agent'
 APPD_PHP_AGENT_TAR = 'appdynamics-php-agent-x64-linux-4.3.3.4.tar.bz2'
 APPD_ACCESSKEY_FILE = 'appd_accesskey'
-APPD_ACCESSKEY = 'fn6174mcal8r'
+APPD_ACCESSKEY = '01b11597fada'
 APPD_PHP_INSTALL_FOLDER = '/opt/appdynamics/php-agent'
 SECRETS_BUCKET = 'iss-549075299630-us-west-2'
 
@@ -147,6 +147,16 @@ default_attributes(
         'key' => APPD_ACCESSKEY
       }
     }
+  },
+  "appdynamics_java_agent" => {
+    "config"=> {
+      "controller" => {
+        "host" => APPD_CONTROLLER_HOST,
+        "account" => APPD_ACCOUNT,
+        "key"=> APPD_ACCESSKEY
+      }
+    }
   }
+
 
 )

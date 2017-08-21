@@ -30,11 +30,11 @@ default_attributes(
       'controller' => APPD_CONTROLLER_HOST,
       'install_folder' => APPD_PHP_INSTALL_FOLDER
     },
-  'wp' => {
+    'wp' => {
       'dbUser' => 'db_username',
       'dbPassword' => 'db_password',
       'dbHost' => 'cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306'
-      
+
     },
     'nginx' => {
       'install_folder' => NGINX_INSTALL_LOCATION,
@@ -146,6 +146,15 @@ default_attributes(
         'host' => APPD_CONTROLLER_HOST,
         'account' => APPD_ACCOUNT,
         'key' => APPD_ACCESSKEY
+      }
+    }
+  },
+  "appdynamics_java_agent" => {
+    "config"=> {
+      "controller" => {
+        "host" => APPD_CONTROLLER_HOST,
+        "account" => APPD_ACCOUNT,
+        "key"=> APPD_ACCESSKEY
       }
     }
   }
