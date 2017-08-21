@@ -13,7 +13,7 @@ end
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{appd}" do
   source "#{appd_bucket}/#{appd}"
-  mode 0o755
+  mode '0755'
 end
 
 execute 'untar the appd file' do

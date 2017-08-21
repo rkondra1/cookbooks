@@ -3,7 +3,7 @@
 include_recipe('wordpress::4.8')
 # Override wp-config file
 template "#{node['wp-authoring']['nginx']['install_folder']}/#{node['wp-authoring']['nginx']['tenantName']}/wordpress/wp-config.php" do
-  mode 0o755
+  mode '0755'
   source 'wp-conf.erb'
   owner 'nginx'
   group 'nginx'
@@ -33,7 +33,7 @@ end
 directory "#{node['wp-authoring']['nginx']['install_folder']}/health" do
   owner 'nginx'
   group 'nginx'
-  mode '1755'
+  mode '0755'
   recursive
   action :create
 end
@@ -42,7 +42,7 @@ end
  'common_health.php',
  'local.php'].each do |file|
   template "#{node['wp-authoring']['nginx']['install_folder']}/health/#{file}" do
-    mode 0o755
+    mode '0755'
     source "#{file}.erb"
     owner 'nginx'
     group 'nginx'
@@ -52,5 +52,5 @@ end
 
 remote_file node['wp-authoring']['wp']['rds_ssl_ca_file'] do
   source "#{node['wp-authoring']['rds_ssl_cert_location']}/rds-combined-ca-bundle.pem"
-  mode 0o755
+  mode '0755'
 end

@@ -1,12 +1,12 @@
 patch = 'wp-patch'
 remote_file "#{Chef::Config[:file_cache_path]}/#{patch}.zip" do
   source node['wp-authoring']['wp']['patch_download_location']
-  mode 0o755
+  mode '0755'
 end
 
 cookbook_file "#{node['wp-authoring']['deploy']['download_dir']}/apply-patch.sh" do
   source 'apply-patch.sh'
-  mode 0o755
+  mode '0755'
   action :create
 end
 
