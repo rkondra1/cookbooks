@@ -1,7 +1,0 @@
-name 'wordpress'
-maintainer 'Joseph Joice'
-maintainer_email 'joseph_joice@intuit.com'
-license 'all_rights'
-description 'Installs/Configures wordpress'
-long_description 'Installs/Configures wordpress'
-version '0.1.0'
