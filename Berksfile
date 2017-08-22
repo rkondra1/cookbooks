@@ -1,6 +1,6 @@
 source 'https://supermarket.platform.intuit.net/'
 
-cookbook 'splunk', git: 'https://github.intuit.com/shared-cookbooks/splunk-skyport.git', tag: '0.2.0'
+cookbook 'splunk-skyport', git: 'https://github.intuit.com/shared-cookbooks/splunk-skyport.git', tag: '1.0.0'
 cookbook 'nginx', git: 'https://github.intuit.com/ctgdevops/shared-cookbooks.git', rel: 'nginx', branch: 'master'
 cookbook 'wordpress', git: 'https://github.intuit.com/ctgdevops/shared-cookbooks.git', rel: 'wordpress', branch: 'master'
 cookbook 'appdynamics_machine_agent', git: 'https://github.intuit.com/ctgdevops/shared-cookbooks.git', rel: 'appdynamics_machine_agent', tag: 'shared-cookbooks-4.0.110'

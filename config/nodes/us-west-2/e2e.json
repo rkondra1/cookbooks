@@ -3,7 +3,7 @@
   "secrets": {
     "prefix": [ "shared","wp-authoring/web/e2e" ]
   },
-  "splunk": {
+  "splunk-skyport": {
     "inputs": {
       "index": "cms_e2e_authoring_west2",
       "fields": {
@@ -44,7 +44,7 @@
   "run_list": [
     "role[preproduction]",
     "recipe[secrets]",
-    "recipe[splunk]",
+    "recipe[splunk-skyport]",
     "recipe[overrides::deploy_secrets]",
     "recipe[authoring::nginx]",
     "recipe[appdynamics_machine_agent::4.2.12.1]",

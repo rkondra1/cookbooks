@@ -47,7 +47,7 @@ default_attributes(
   'wordpress' => {
     'install_location' => WORDPRESS_INSTALL_LOCATION
   },
-  'splunk' => {
+  'splunk-skyport' => {
     'inputs' => {
       'monitors' => {
         '/opt/appdynamics/machine_agent/logs/machine-agent.log' => {

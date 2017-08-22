@@ -2,7 +2,7 @@
   "secrets": {
     "prefix": [ "shared","wp-authoring/web/prod" ]
   },
-  "splunk": {
+  "splunk-skyport": {
     "inputs": {
       "index": "cms_prod_authoring_west2",
       "fields": {
@@ -43,7 +43,7 @@
   "run_list": [
     "role[production]",
     "recipe[secrets]",
-    "recipe[splunk]",
+    "recipe[splunk-skyport]",
     "recipe[overrides::deploy_secrets]",
     "recipe[authoring::nginx]",
     "recipe[appdynamics_machine_agent::4.2.12.1]",
