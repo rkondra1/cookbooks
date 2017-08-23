@@ -17,3 +17,12 @@ template '/etc/php-fpm.d/www.conf' do
   group 'nginx'
   backup false
 end
+
+directory "#{node['wp-authoring']['install_location']}/wordpress/wp-content/uploads" do
+  owner 'nginx'
+  group 'nginx'
+  mode '0755'
+  recursive
+  action :create
+end
+
