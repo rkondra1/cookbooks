@@ -58,6 +58,7 @@
     "recipe[authoring::plugins]",
     "recipe[authoring::permissions]",
     "recipe[authoring::start_server]",
+    "recipe[authoring::dev-hack]",
     "recipe[authoring::deep_healthcheck]"
 
 

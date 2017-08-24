@@ -24,7 +24,7 @@ execute 'copy environment config files' do
 end
 
 execute 'copy php configs' do
-  command 'cp -r php-configs/* /etc/php.d/'
+  command 'cp -r php-configs/wordpress-overrides.ini /etc/php.d/'
   user 'root'
   cwd node['wp-authoring']['deploy']['download_dir']
 end
