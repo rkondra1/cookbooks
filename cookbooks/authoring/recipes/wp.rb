@@ -55,7 +55,7 @@ remote_file node['wp-authoring']['wp']['rds_ssl_ca_file'] do
   mode '0755'
 end
 
-directory "#{node['wp-authoring']['install_location']}/wordpress/wp-content/uploads" do
+directory "#{node['wordpress']['install_location']}/wordpress/wp-content/uploads" do
   owner 'nginx'
   group 'nginx'
   mode '0755'
