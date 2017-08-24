@@ -54,3 +54,12 @@ remote_file node['wp-authoring']['wp']['rds_ssl_ca_file'] do
   source "#{node['wp-authoring']['rds_ssl_cert_location']}/rds-combined-ca-bundle.pem"
   mode '0755'
 end
+
+directory "#{node['wp-authoring']['install_location']}/wordpress/wp-content/uploads" do
+  owner 'nginx'
+  group 'nginx'
+  mode '0755'
+  recursive
+  action :create
+end
+
