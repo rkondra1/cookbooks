@@ -13,7 +13,7 @@ default_attributes(
     }
 
   },
-  'splunk' => {
+  'splunk-skyport' => {
     'inputs' => {
       'monitors' => {
         '/opt/appdynamics/machine_agent/logs/machine-agent.log' => {
