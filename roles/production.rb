@@ -28,12 +28,14 @@ default_attributes(
       'account' => APPD_ACCOUNT,
       'accesskeyfile' => APPD_ACCESSKEY_FILE,
       'controller' => APPD_CONTROLLER_HOST,
-      'install_folder' => APPD_PHP_INSTALL_FOLDER
+      'install_folder' => APPD_PHP_INSTALL_FOLDER,
+      'domain_suffix' => 'cms.a.intuit.com'
     },
   'wp' => {
       'dbUser' => 'db_username',
       'dbPassword' => 'db_password',
-      'dbHost' => 'cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306'
+      'dbHost' => 'wp-authoring-db-prod-us-west-2.cyccw0l0apjg.us-west-2.rds.amazonaws.com:3306'
+      'hostname' => 'authoring.cms.intuit.com'
     },
     'nginx' => {
       'install_folder' => NGINX_INSTALL_LOCATION,
@@ -95,7 +97,7 @@ default_attributes(
 
     },
     'outputs' => {
-      'server' => 'splunkaws-hf9995.ppd.qdc.cms.intuit.com:9995'
+      'server' => 'splunkaws-hf9995.prd.lvdc.cms.intuit.com:9995, splunkaws-hf9995.prd.qdc.cms.intuit.com:9995'
     },
     'secrets_bucket' => SECRETS_BUCKET
 
