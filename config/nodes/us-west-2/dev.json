@@ -42,7 +42,6 @@
 
   "run_list": [
     "role[preproduction]",
-    "role[override-tenant]",
     "recipe[secrets]",
     "recipe[splunk-skyport]",
     "recipe[overrides::deploy_secrets]",
@@ -58,7 +57,6 @@
     "recipe[authoring::plugins]",
     "recipe[authoring::permissions]",
     "recipe[authoring::start_server]",
-    "recipe[authoring::dev-hack]",
     "recipe[authoring::deep_healthcheck]"
 
 
