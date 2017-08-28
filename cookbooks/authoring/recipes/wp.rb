@@ -24,7 +24,7 @@ execute 'copy environment config files' do
 end
 
 execute 'copy php configs' do
-  command 'cp -r php-configs/* /etc/php.d/'
+  command 'cp -r php-configs/wordpress-overrides.ini /etc/php.d/'
   user 'root'
   cwd node['wp-authoring']['deploy']['download_dir']
 end
@@ -63,3 +63,15 @@ directory "#{node['wordpress']['install_location']}/wordpress/wp-content/uploads
   action :create
 end
 
+
+execute 'extract static content zip' do
+  command "unzip -o *#{node['wp-authoring']['wp']['static_content_zip_name']}*.zip "
+  user 'root'
+  cwd node['wp-authoring']['deploy']['download_dir']
+end
+
+execute 'copy static html pages' do
+  command "cp html/* #{node['wp-authoring']['nginx']['install_folder']}/"
+  user 'root'
+  cwd node['wp-authoring']['deploy']['download_dir']
+end
