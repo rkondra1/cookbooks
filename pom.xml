@@ -4,7 +4,7 @@
 
     <groupId>com.intuit.ctg.cms.chef</groupId>
     <artifactId>cms-authoring-cookbooks</artifactId>
-    <version>0.0.26-SNAPSHOT</version>
+    <version>0.0.27-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
