@@ -10,13 +10,13 @@ wp_health($handle);
 
 
 //Downstream checks
-curl_setopt($handle, CURLOPT_URL, CAS_URL."<%= node['wp-authoring']['CAS']['healthcheck_endpoint']%>");
+curl_setopt($handle, CURLOPT_URL, "http://localhost:<%=node['nginx']['server']['healthcheck']['listen_port']%>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/?rest_route=/contenttransformer/v1/health/full");
 curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
 $output = curl_exec($handle);
 $info   = curl_getinfo($handle);
 $downstream_response = $info['http_code'];
 if ($downstream_response != SUCCESS_HTTP_CODE) {
-  echo "Health check Fail. CAS returned a ".$downstream_response;
+  echo "Health check Fail. Health full returned a ".$downstream_response;
   cleanup($handle,$downstream_response,$output);
 }
 
