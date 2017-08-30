@@ -23,3 +23,15 @@ execute 'Apply patch' do
   cwd node['wp-authoring']['deploy']['download_dir']
   user 'root'
 end
+
+file "#{node['wordpress']['install_location']}/wordpress/xmlrpc.php" do
+  action :delete
+end
+
+file "#{node['wordpress']['install_location']}/wordpress/license.txt" do
+  action :delete
+end
+
+file "#{node['wordpress']['install_location']}/wordpress/readme.html" do
+  action :delete
+end
