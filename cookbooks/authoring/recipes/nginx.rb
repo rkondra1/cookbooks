@@ -6,7 +6,8 @@ node.default['nginx']['server']['ssl_proxy_protocol']['locations'] = [{
                 'index index.php;',
                 'real_ip_header proxy_protocol;',
                 'proxy_http_version 1.1;',
-                'include /etc/nginx/location-conf.d/ssl-wordpress.conf;'],
+                'include /etc/nginx/location-conf.d/ssl-wordpress.conf;',
+                'include /etc/nginx/location-conf.d/restrict-url-wordpress.conf;']
 }]
 
 include_recipe('nginx::1.8.0-2')
@@ -29,6 +30,14 @@ end
 template '/etc/nginx/location-conf.d/ssl-wordpress.conf' do
   mode '0644'
   source 'ssl-wordpress.conf.erb'
+  owner 'nginx'
+  group 'nginx'
+  backup false
+end
+
+template '/etc/nginx/location-conf.d/restrict-url-wordpress.conf' do
+  mode '0644'
+  source 'restrict-url-wordpress.conf.erb'
   owner 'nginx'
   group 'nginx'
   backup false
