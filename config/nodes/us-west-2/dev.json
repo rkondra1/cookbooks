@@ -57,6 +57,7 @@
     "recipe[authoring::plugins]",
     "recipe[authoring::permissions]",
     "recipe[authoring::start_server]",
+    "recipe[authoring::refresh_layout]",
     "recipe[authoring::deep_healthcheck]"
 
 
