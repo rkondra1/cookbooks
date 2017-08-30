@@ -18,4 +18,26 @@ template '/etc/php-fpm.d/www.conf' do
   backup false
 end
 
+directory "/var/log/php-fpm" do
+  owner 'nginx'
+  group 'nginx'
+  mode '0755'
+  recursive
+  action :create
+end
+
+file "/var/log/php-fpm/php-fpm.log" do
+  owner 'nginx'
+  group 'nginx'
+  mode '0755'
+  action :create
+end
+
+directory "/var/lib/php" do
+  owner 'nginx'
+  group 'nginx'
+  mode '0755'
+  recursive
+  action :create
+end
 
