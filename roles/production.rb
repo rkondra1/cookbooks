@@ -34,7 +34,7 @@ default_attributes(
   'wp' => {
       'dbUser' => 'db_username',
       'dbPassword' => 'db_password',
-      'dbHost' => 'wp-authoring-db-prod-us-west-2.cyccw0l0apjg.us-west-2.rds.amazonaws.com:3306'
+      'dbHost' => 'wp-authoring-db-prod-us-west-2.cyccw0l0apjg.us-west-2.rds.amazonaws.com:3306',
       'hostname' => 'authoring.cms.intuit.com'
     },
     'nginx' => {
