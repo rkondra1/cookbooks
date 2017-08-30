@@ -1,3 +1,11 @@
+location ~* /<%= node['wp-authoring']['nginx']['tenantName'] %>/wordpress/wp-config.*php$ {
+return 404;
+}
+
+location ~* /<%= node['wp-authoring']['nginx']['tenantName'] %>/wordpress/wp-content/uploads/.*php$ {
+return 404;
+}
+
 location = /{
 return 302 /<%= node['wp-authoring']['nginx']['tenantName'] %>/wordpress;
 }
