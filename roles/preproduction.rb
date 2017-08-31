@@ -108,7 +108,7 @@ default_attributes(
   'nginx' => {
     'use_proxy_protocol_configs' => true,
     'suppress_automatic_semicolon' => true,
-    'clientMaxBodySize' => '5m',
+    'clientMaxBodySize' => '10m',
     'logType' => 'json',
     'proxy_protocol_support_443' => 'default_server ssl proxy_protocol',
     'sslCert' => '/etc/ssl/server.pem',
