@@ -21,13 +21,13 @@
   },
  "appdynamics_machine_agent":{
     "config":{
-      "application_name":"ctg_ctgu_authoring_prod",
+      "application_name":"ctg_ctgu_authoring_prd",
       "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
     }
   },
   "appdynamics_java_agent":{
     "config":{
-      "application_name":"ctg_ctgu_authoring_prod",
+      "application_name":"ctg_ctgu_authoring_prd",
       "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
     }
   },
