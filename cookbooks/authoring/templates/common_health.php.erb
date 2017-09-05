@@ -15,7 +15,7 @@ function cleanup($handle,$downstream_response,$output){
 
 function wp_health($handle){
 
-  curl_setopt($handle, CURLOPT_URL, "http://localhost:<%=node['nginx']['server']['healthcheck']['listen_port']%>/<%=node['wp-authoring']['nginx']['tenantName']%>/wp-cron.php?doing_wp_cron");
+  curl_setopt($handle, CURLOPT_URL, "http://localhost:<%=node['nginx']['server']['healthcheck']['listen_port']%>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/wp-cron.php?doing_wp_cron");
   curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
   $output = curl_exec($handle);
   $info   = curl_getinfo($handle);
