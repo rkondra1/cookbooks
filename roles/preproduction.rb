@@ -140,7 +140,7 @@ default_attributes(
 
 
   },
-  'appdynamics' => {
+  'appdynamics_machine_agent' => {
     'config' => {
       'controller' => {
         'host' => APPD_CONTROLLER_HOST,
