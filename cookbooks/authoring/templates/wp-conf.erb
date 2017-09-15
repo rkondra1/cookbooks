@@ -36,6 +36,15 @@ define('MYSQL_SSL_CA', '<%= node['wp-authoring']['wp']['rds_ssl_ca_file']%>');
 
 define('WP_ENV','<%= node['wp-authoring']['wp']['env'] %>');
 
+define('OAUTH2_REDIRECT_URI', 'localhost');
+define('CLIENT_ID', '<%= node.run_state['secrets']['data']['clientId'].strip %>');
+define('CLIENT_SECRET','<%= node.run_state['secrets']['data']['clientSecret'].strip %>');
+define('APPID', '<%= node.run_state['secrets']['data']['appid'].strip %>');
+define('APPSECRET', '<%= node.run_state['secrets']['data']['appSecret'].strip %>');
+define('APP_USERNAME', '<%= node.run_state['secrets']['data']['appUsername'].strip %>');
+define('APP_PASSWORD', '<%= node.run_state['secrets']['data']['appPassword'].strip %>');
+
+
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
