@@ -46,7 +46,8 @@ default_attributes(
     }
   },
   'wordpress' => {
-    'install_location' => WORDPRESS_INSTALL_LOCATION
+    'install_location' => WORDPRESS_INSTALL_LOCATION,
+    'download_location' => "https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8.2/wordpress.tar.gz" 
   },
   'splunk-skyport' => {
     'inputs' => {
