@@ -1,0 +1,26 @@
+<?php
+require_once('common_health.php');
+include "<%= node['wp-authoring']['nginx']['install_folder'] %>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/wp-config.php";
+
+$handle = curl_init();
+
+
+//Downstream checks
+curl_setopt($handle, CURLOPT_URL, "http://localhost:<%=node['nginx']['server']['healthcheck']['listen_port']%>/<%=node['wp-authoring']['nginx']['tenantName']%>/wordpress/?rest_route=/contenttransformer/v1/health/full");
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
+$output = curl_exec($handle);
+$info   = curl_getinfo($handle);
+$downstream_response = $info['http_code'];
+if ($downstream_response != SUCCESS_HTTP_CODE) {
+  echo "Schema call failed. Health full returned a ".$downstream_response;
+  cleanup($handle,$downstream_response,$output);
+}
+
+
+curl_close($handle);
+
+//If any plugin related health checks
+//Else everything good, return an OK
+echo $output;
+http_response_code(SUCCESS_HTTP_CODE);
+?>

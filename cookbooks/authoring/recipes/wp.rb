@@ -40,6 +40,7 @@ end
 
 ['deep.php',
  'common_health.php',
+ 'schema.php',
  'local.php'].each do |file|
   template "#{node['wp-authoring']['nginx']['install_folder']}/health/#{file}" do
     mode '0755'
