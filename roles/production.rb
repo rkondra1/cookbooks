@@ -117,6 +117,7 @@ default_attributes(
     'sslKey' => '/etc/ssl/server.key',
     'server' => {
       'healthcheck' => {
+        'access_log' => '',
         'locations' => [
           {
             'path' => '/',
