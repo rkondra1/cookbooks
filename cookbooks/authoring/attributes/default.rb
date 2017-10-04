@@ -16,6 +16,7 @@ default['wp-authoring']['deploy']['plugins'] = ['content-transformer',
                                                 'plugin-oasis-workflow-pro',
                                                 'plugin-sucuri-scanner',
                                                 'plugin-wp-mail-smtp',
+                                                'data-patch',
                                                 'language-support']
 default['wp-authoring']['healthcheck']['deep_healthcheck_endpoint'] = 'health/deep.php'
 default['wp-authoring']['php']['artifact_bucket'] = 'https://s3-us-west-2.amazonaws.com/ctgdevops-software/php/7.1.5'
