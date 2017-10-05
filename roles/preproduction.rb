@@ -75,9 +75,6 @@ default_attributes(
         '/var/log/php-fpm/*.log' => {
           'sourcetype' => 'log4j',
         },
-        '/var/log/php-fpm/data-patch-logs.log' => {
-          'sourcetype' => 'log4j',
-        },
         '/app/jms-client/logs/*.log' => {
           'sourcetype' => 'log4j',
         },
