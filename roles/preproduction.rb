@@ -11,6 +11,8 @@ APPD_ACCESSKEY_FILE = 'appd_accesskey'
 APPD_ACCESSKEY = 'fn6174mcal8r'
 APPD_PHP_INSTALL_FOLDER = '/opt/appdynamics/php-agent'
 SECRETS_BUCKET = 'iss-749540722843-us-west-2'
+WORDPRESS_PATCH_DOWNLOAD_PATH = 'https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8.3/wordpress-patches.zip',
+WORDPRESS_DOWNLOAD_PATH = 'https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8.3/wordpress.tar.gz'
 
 default_attributes(
   'secrets' => {
@@ -33,7 +35,8 @@ default_attributes(
     'wp' => {
       'dbUser' => 'db_username',
       'dbPassword' => 'db_password',
-      'dbHost' => 'cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306'
+      'dbHost' => 'cms-wordpress-authoring-db-dev-us-west-2.cgtsxfmpe5va.us-west-2.rds.amazonaws.com:3306',
+      'patch_download_location' => WORDPRESS_PATCH_DOWNLOAD_PATH
 
     },
     'nginx' => {
@@ -46,7 +49,7 @@ default_attributes(
   },
   'wordpress' => {
     'install_location' => WORDPRESS_INSTALL_LOCATION,
-    'download_location' => "https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8.2/wordpress.tar.gz" 
+    'download_location' => WORDPRESS_DOWNLOAD_PATH
   },
   'splunk-skyport' => {
     'inputs' => {
@@ -89,7 +92,7 @@ default_attributes(
         }
       },
       'fields' => {
-        'role' => [ 
+        'role' => [
           "web",
           "us-west-2"
         ]
