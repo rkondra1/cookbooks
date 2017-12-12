@@ -18,6 +18,10 @@ location =  /<%= node['wp-authoring']['nginx']['tenantName'] %> {
 return 302  /<%= node['wp-authoring']['nginx']['tenantName'] %>/wordpress;
 }
 
+location ~ /cms/wordpress/wp-json* {
+try_files $uri $uri/ /cms/wordpress/index.php?$args;
+}
+
 location ~ [^/]\.php(/|$) {
 fastcgi_split_path_info ^(.+?\.php)(/.*)$;
 if (!-f $document_root$fastcgi_script_name) {
@@ -31,8 +35,6 @@ fastcgi_buffers  16 16k;
 fastcgi_buffer_size  32k;
 include /etc/nginx/fastcgi_params;
 }
-
-
 
 error_page 404 /40x.html;
 location = /40x.html {
