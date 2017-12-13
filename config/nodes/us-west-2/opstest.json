@@ -2,46 +2,58 @@
   "secrets": {
     "prefix": [ "shared","wp-authoring/web/opstest" ]
   },
-  "splunk-skyport": {
-    "inputs": {
-      "index": "cms_opstest_authoring_west2",
-      "fields": {
-        "appname": "wp-authoring",
-        "role": "web",
-        "region": "us-west-2",
+    "oim-collectd": {
+      "tags": {
+        "hash": {
+          "bu": "ctg",
+          "app": "authoring",
+          "env": "opstest",
+          "pool": "app",
+          "servicegroup": "cms"
+        }
+      }
+    },
+    "splunk-skyport": {
+      "inputs": {
+        "index": "cms_opstest_authoring_west2",
+        "fields": {
+          "appname": "wp-authoring",
+          "role": "web",
+          "region": "us-west-2",
+          "env": "opstest"
+        }
+      }
+    },
+    "wp-authoring":{
+      "wp": {
+        "dbName": "wp_opstest",
         "env": "opstest"
       }
-    }
-  },
-  "wp-authoring":{
-    "wp": {
-      "dbName": "wp_opstest",
-      "env": "opstest"
-    }
-  },
-  "appdynamics_machine_agent":{
-    "config":{
-      "application_name":"ctg_ctgu_authoring_opstest",
-      "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
-    }
-  },
-  "appdynamics_java_agent":{
-    "config":{
-      "application_name":"ctg_ctgu_authoring_opstest",
-      "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
-    }
-  },
+    },
+    "appdynamics_machine_agent":{
+      "config":{
+        "application_name":"ctg_ctgu_authoring_opstest",
+        "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
+      }
+    },
+    "appdynamics_java_agent":{
+      "config":{
+        "application_name":"ctg_ctgu_authoring_opstest",
+        "tier_name":"authoring_app_component:jms_location:aws_region:us-west-2"
+      }
+    },
 
-  "deploy-jms-client":{
-    "jms-java-options":{
-      "JAVA_OPTS": "-DENV=opstest_us-west-2 -javaagent:/opt/appdynamics/java_agent/javaagent.jar"
-      
-    }
-  },
+    "deploy-jms-client":{
+      "jms-java-options":{
+        "JAVA_OPTS": "-DENV=opstest_us-west-2 -javaagent:/opt/appdynamics/java_agent/javaagent.jar"
 
-  "run_list": [
-    "role[preproduction]",
+      }
+    },
+
+    "run_list": [
+      "role[preproduction]",
     "recipe[secrets]",
+    "recipe[oim-collectd::default]",
     "recipe[splunk-skyport]",
     "recipe[overrides::deploy_secrets]",
     "recipe[authoring::nginx]",
@@ -50,5 +62,5 @@
     "recipe[appdynamics_java_agent::4.2.12.1]",
     "recipe[appdynamics_java_agent::config]",
     "recipe[authoring]"
-  ]
+    ]
 }

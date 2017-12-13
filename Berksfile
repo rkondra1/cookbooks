@@ -8,3 +8,4 @@ cookbook 'appdynamics_java_agent', git: 'https://github.intuit.com/ctgdevops/sha
 cookbook 'secrets', git: 'https://github.intuit.com/cto-dev-security-services/secrets-cookbook.git', tag: '1.0.2'
 cookbook 'overrides', git: 'https://github.intuit.com/ContentMgmt/common-cms-cookbooks.git', rel: 'cookbooks/overrides', branch: 'master'
 cookbook 'deploy-jms-client', git: 'https://github.intuit.com/ContentMgmt/common-cms-cookbooks.git', rel: 'cookbooks/deploy-jms-client', branch: 'development'
+cookbook 'oim-collectd', git: 'https://github.intuit.com/OIP/oim-collectd.git', tag: 'v0.3.0'

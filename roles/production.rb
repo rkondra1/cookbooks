@@ -15,30 +15,30 @@ WORDPRESS_PATCH_DOWNLOAD_PATH = 'https://s3-us-west-2.amazonaws.com/ctgdevops-so
 WORDPRESS_DOWNLOAD_PATH = 'https://s3-us-west-2.amazonaws.com/ctgdevops-software/wordpress/4.8.3/wordpress.tar.gz'
 
 default_attributes(
-  'secrets' => {
+    'secrets' => {
     'kms_region' => 'us-west-2',
     'secrets_s3_bucket' => SECRETS_BUCKET,
     'kms_cmk_id' => SECRETS_BUCKET,
     'shred_secrets' => 'false',
     'cli_source' => 'artifacts-549075299630-us-west-2',
     'cli_package' => 'secrets-cli-2.3.4.0.rpm'
-  },
-  'wp-authoring' => {
-    'appdynamics' =>{
-      'php_agent_tar' => APPD_PHP_AGENT_TAR,
-      'php_agent_bucket' => APPD_PHP_AGENT_BUCKET,
-      'account' => APPD_ACCOUNT,
-      'accesskeyfile' => APPD_ACCESSKEY_FILE,
-      'controller' => APPD_CONTROLLER_HOST,
-      'install_folder' => APPD_PHP_INSTALL_FOLDER,
-      'domain_suffix' => 'cms.a.intuit.com'
     },
-  'wp' => {
-      'dbUser' => 'db_username',
-      'dbPassword' => 'db_password',
-      'dbHost' => 'wp-authoring-db-prod-us-west-2.cyccw0l0apjg.us-west-2.rds.amazonaws.com:3306',
-      'hostname' => 'authoring.cms.intuit.com',
-      'patch_download_location' => WORDPRESS_PATCH_DOWNLOAD_PATH
+    'wp-authoring' => {
+    'appdynamics' =>{
+    'php_agent_tar' => APPD_PHP_AGENT_TAR,
+    'php_agent_bucket' => APPD_PHP_AGENT_BUCKET,
+    'account' => APPD_ACCOUNT,
+    'accesskeyfile' => APPD_ACCESSKEY_FILE,
+    'controller' => APPD_CONTROLLER_HOST,
+    'install_folder' => APPD_PHP_INSTALL_FOLDER,
+    'domain_suffix' => 'cms.a.intuit.com'
+    },
+    'wp' => {
+    'dbUser' => 'db_username',
+    'dbPassword' => 'db_password',
+    'dbHost' => 'wp-authoring-db-prod-us-west-2.cyccw0l0apjg.us-west-2.rds.amazonaws.com:3306',
+    'hostname' => 'authoring.cms.intuit.com',
+    'patch_download_location' => WORDPRESS_PATCH_DOWNLOAD_PATH
     },
     'nginx' => {
       'install_folder' => NGINX_INSTALL_LOCATION,
@@ -47,123 +47,137 @@ default_attributes(
     'deploy' => {
       'download_dir' => ARTIFACT_DOWNLOAD_LOCATION
     }
-  },
-  'wordpress' => {
-    'install_location' => WORDPRESS_INSTALL_LOCATION,
-    'download_location' => WORDPRESS_DOWNLOAD_PATH
-  },
-  'splunk-skyport' => {
-    'inputs' => {
-      'monitors' => {
-        '/opt/appdynamics/machine_agent/logs/machine-agent.log' => {
-          'sourcetype' => 'log4j',
-        },
-        '/var/log/audit/audit.log' => {
-          'sourcetype' => 'linux_audit',
-        },
-        '/var/log/boot.log' => {
-          'sourcetype' => 'linux_bootlog',
-        },
-        '/var/log/chef/chef.log' => {
-          'sourcetype' => 'log4j',
-        },
-        '/var/log/messages' => {
-          'sourcetype' => 'syslog',
-        },
-        '/var/log/cloud-init*' => {
-          'sourcetype' => 'log4j',
-        },
-        '/var/log/nginx/*.log' => {
-          'sourcetype' => 'log4j',
-        },
-        '/var/log/php-fpm/*.log' => {
-          'sourcetype' => 'log4j',
-        },
-        '/app/jms-client/logs/*.log' => {
-          'sourcetype' => 'log4j',
-        },
-        "#{WORDPRESS_INSTALL_LOCATION}/wordpress/wp-content/debug.log" => {
-          'sourcetype' => 'log4j',
-        },
-        "#{WORDPRESS_INSTALL_LOCATION}/wordpress/wp-content/uploads/sucuri/*.php" => {
-          'sourcetype' => 'json',
-        },
-        "#{WORDPRESS_INSTALL_LOCATION}/wordpress/wp-content/plugins/.../*.log" => {
-          'sourcetype' => 'log4j',
-        }
-      },
-      'fields' => {
-        'role' => [
-          "web",
-          "us-west-2"
-        ]
-      }
-
     },
-    'outputs' => {
-      'server' => 'splunkaws-hf9995.prd.lvdc.cms.intuit.com:9995, splunkaws-hf9995.prd.qdc.cms.intuit.com:9995'
+    'wordpress' => {
+      'install_location' => WORDPRESS_INSTALL_LOCATION,
+      'download_location' => WORDPRESS_DOWNLOAD_PATH
     },
-    'secrets_bucket' => SECRETS_BUCKET
-
-  },
-  'overrides' => {
-    'wildcardcert_key' => 'authoring_cert_key',
-    'wildcardcert_pub' => 'authoring_cert_pem'
-  },
-  'nginx' => {
-    'use_proxy_protocol_configs' => true,
-    'suppress_automatic_semicolon' => true,
-    'clientMaxBodySize' => '10m',
-    'logType' => 'json',
-    'proxy_protocol_support_443' => 'default_server ssl proxy_protocol',
-    'sslCert' => '/etc/ssl/server.pem',
-    'sslKey' => '/etc/ssl/server.key',
-    'server' => {
-      'healthcheck' => {
-        'access_log' => '',
-        'locations' => [
+    'oim-collectd' => {
+      'plugins' => {
+        'statsd'=> {
+          'enabled'=> true
+        },
+        'nginx'=> {
+          'enabled'=> true,
+          'options'=>
           {
-            'path' => '/',
-            'options' => [
-              "root /usr/share/nginx/html;",
-              "index index.php;",
-              "include /etc/nginx/location-conf.d/ssl-wordpress.conf;"
-
-            ]
+            'URL'=> 'http://localhost:80/health/local.php'
           }
-        ]
-
+        }
       }
     },
-    'upstream' => false
-  },
-  'deploy-jms-client' => {
-    'jms_install_dir' => '/app/jms-client',
-    'jms_app_owner' => 'root',
-    'jms_group_owner' => 'root',
-    'jms_client_location' => ARTIFACT_DOWNLOAD_LOCATION,
-    'jms_client_name' => 'wordpress-jms-client'
+    'splunk-skyport' => {
+      'inputs' => {
+        'monitors' => {
+          '/opt/appdynamics/machine_agent/logs/machine-agent.log' => {
+            'sourcetype' => 'log4j',
+          },
+          '/var/log/audit/audit.log' => {
+            'sourcetype' => 'linux_audit',
+          },
+          '/var/log/boot.log' => {
+            'sourcetype' => 'linux_bootlog',
+          },
+          '/var/log/chef/chef.log' => {
+            'sourcetype' => 'log4j',
+          },
+          '/var/log/messages' => {
+            'sourcetype' => 'syslog',
+          },
+          '/var/log/cloud-init*' => {
+            'sourcetype' => 'log4j',
+          },
+          '/var/log/nginx/*.log' => {
+                           'sourcetype' => 'log4j',
+                           },
+                           '/var/log/php-fpm/*.log' => {
+                           'sourcetype' => 'log4j',
+                           },
+                           '/app/jms-client/logs/*.log' => {
+                           'sourcetype' => 'log4j',
+                           },
+                           "#{WORDPRESS_INSTALL_LOCATION}/wordpress/wp-content/debug.log" => {
+                           'sourcetype' => 'log4j',
+                           },
+                           "#{WORDPRESS_INSTALL_LOCATION}/wordpress/wp-content/uploads/sucuri/*.php" => {
+                           'sourcetype' => 'json',
+                           },
+                           "#{WORDPRESS_INSTALL_LOCATION}/wordpress/wp-content/plugins/.../*.log" => {
+                           'sourcetype' => 'log4j',
+                           }
+                           },
+                           'fields' => {
+                           'role' => [
+                           "web",
+                           "us-west-2"
+                           ]
+                           }
+
+                           },
+                           'outputs' => {
+                           'server' => 'splunkaws-hf9995.prd.lvdc.cms.intuit.com:9995, splunkaws-hf9995.prd.qdc.cms.intuit.com:9995'
+                           },
+                           'secrets_bucket' => SECRETS_BUCKET
+
+                           },
+                           'overrides' => {
+                           'wildcardcert_key' => 'authoring_cert_key',
+                           'wildcardcert_pub' => 'authoring_cert_pem'
+                           },
+                           'nginx' => {
+                           'use_proxy_protocol_configs' => true,
+                           'suppress_automatic_semicolon' => true,
+                           'clientMaxBodySize' => '10m',
+                           'logType' => 'json',
+                           'proxy_protocol_support_443' => 'default_server ssl proxy_protocol',
+                           'sslCert' => '/etc/ssl/server.pem',
+                           'sslKey' => '/etc/ssl/server.key',
+                           'server' => {
+                           'healthcheck' => {
+                           'access_log' => '',
+                           'locations' => [
+                           {
+                           'path' => '/',
+                           'options' => [
+                           "root /usr/share/nginx/html;",
+                           "index index.php;",
+                           "include /etc/nginx/location-conf.d/ssl-wordpress.conf;"
+
+                           ]
+                           }
+                           ]
+
+                           }
+                           },
+                           'upstream' => false
+                           },
+                           'deploy-jms-client' => {
+                           'jms_install_dir' => '/app/jms-client',
+                           'jms_app_owner' => 'root',
+                           'jms_group_owner' => 'root',
+                           'jms_client_location' => ARTIFACT_DOWNLOAD_LOCATION,
+                           'jms_client_name' => 'wordpress-jms-client'
 
 
-  },
-  'appdynamics_machine_agent' => {
-    'config' => {
-      'controller' => {
-        'host' => APPD_CONTROLLER_HOST,
-        'account' => APPD_ACCOUNT,
-        'key' => APPD_ACCESSKEY
-      }
-    }
-  },
-  "appdynamics_java_agent" => {
-    "config"=> {
-      "controller" => {
-        "host" => APPD_CONTROLLER_HOST,
-        "account" => APPD_ACCOUNT,
-        "key"=> APPD_ACCESSKEY
-      }
-    }
-  }
+                           },
+                           'appdynamics_machine_agent' => {
+                           'config' => {
+                           'controller' => {
+                           'host' => APPD_CONTROLLER_HOST,
+            'account' => APPD_ACCOUNT,
+          'key' => APPD_ACCESSKEY
+        }
+        }
+        },
+        "appdynamics_java_agent" => {
+          "config"=> {
+            "controller" => {
+              "host" => APPD_CONTROLLER_HOST,
+              "account" => APPD_ACCOUNT,
+              "key"=> APPD_ACCESSKEY
+            }
+          }
+        }
 
 
 )
