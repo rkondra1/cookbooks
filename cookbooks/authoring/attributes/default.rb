@@ -16,7 +16,8 @@ default['wp-authoring']['deploy']['plugins'] = ['content-transformer',
                                                 'plugin-sucuri-scanner',
                                                 'plugin-wp-mail-smtp',
                                                 'language-support',
-                                                'cms-reporting']
+                                                'cms-reporting',
+                                                'digital-asset']
 default['wp-authoring']['healthcheck']['deep_healthcheck_endpoint'] = 'health/deep.php'
 default['wp-authoring']['php']['artifact_bucket'] = 'https://s3-us-west-2.amazonaws.com/ctgdevops-software/php/7.1.5'
 default['wp-authoring']['php']['version'] = '7.1.5'
