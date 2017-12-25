@@ -4,7 +4,7 @@
 
     <groupId>com.intuit.ctg.cms.chef</groupId>
     <artifactId>cms-authoring-cookbooks</artifactId>
-    <version>0.0.49</version>
+    <version>0.0.50-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -127,7 +127,7 @@ println "";
     <scm>
       <connection>scm:git:https://github.intuit.com/ContentMgmt/authoring-wp-cookbooks.git</connection>
       <url>https://github.intuit.com/ContentMgmt/authoring-wp-cookbooks.git</url>
-        <tag>cms-authoring-cookbooks-0.0.49</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <repositories>
